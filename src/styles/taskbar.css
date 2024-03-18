@@ -1,0 +1,11 @@
+.taskbar {
+    width: 100vw;
+    height: 45px;
+    background-color: #d6dff4fd;
+    box-shadow: 0px -1px .5px 0px #a0acc673;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
