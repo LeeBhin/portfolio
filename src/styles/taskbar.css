@@ -47,3 +47,7 @@
     background-size: cover;
     transition: .1s ease-out;
 }
+
+.startBtn:active #hoverDiv {
+    opacity: 0.7;
+}
