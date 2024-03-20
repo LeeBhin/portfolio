@@ -1,7 +1,27 @@
+import { useEffect, useRef, useState } from 'react';
 import '../styles/taskbar.css'
-import { IoIosSearch } from "react-icons/io";
+import { HiOutlineSearch } from "react-icons/hi";
 
 function Taskbar() {
+    const [isSearchOn, setIsSearchOn] = useState(false)
+    const searchOnRef = useRef(null);
+
+    useEffect(() => {
+        if (isSearchOn) {
+            searchOnRef.current.style.opacity = '1';
+            searchOnRef.current.style.disPlay = 'block';
+            searchOnRef.current.style.zIndex = '2';
+        } else {
+            searchOnRef.current.style.opacity = '0';
+            searchOnRef.current.style.disPlay = 'none';
+            searchOnRef.current.style.zIndex = '-2';
+        }
+    }, [isSearchOn]);
+
+    const handleSearch = () => {
+        setIsSearchOn(prevState => !prevState);
+    }
+
     return (
         <div className="taskbar">
 
@@ -12,11 +32,15 @@ function Taskbar() {
                 </div>
             </div>
 
-
-            <div className='searchBtn'>
+            <div className='searchBtn' onClick={handleSearch}>
                 <div className="searchWrap">
-                    <IoIosSearch />
-                    <IoIosSearch color="white" />
+                    <div className="searchTxt">
+                        <HiOutlineSearch color={isSearchOn ? "white" : ""} />
+                        <span style={{ color: isSearchOn ? "white" : "black" }}>검색 </span>
+                    </div>
+                    <div className="searchBtnDiv searchOff">
+                    </div>
+                    <div className="searchBtnDiv searchOn" ref={searchOnRef}></div>
                 </div>
             </div>
 

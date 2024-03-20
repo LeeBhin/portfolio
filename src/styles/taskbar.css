@@ -8,7 +8,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
 }
+
+/* 시작메뉴 버튼 */
 
 .startBtn:active .startBtnImg {
     width: 50%;
@@ -50,4 +53,65 @@
 
 .startBtn:active #hoverDiv {
     opacity: 0.7;
+}
+
+
+/* 검색버튼 */
+
+.searchWrap {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchBtnDiv {
+    width: 100px;
+    height: 30px;
+    background: #F3F5FC;
+    box-shadow: 0 0 .3px .5px #c8d2e7;
+    border-radius: 100px;
+    transition: .35s;
+    position: absolute;
+}
+
+.searchOn {
+    background: linear-gradient(173deg, rgba(83, 185, 238, 1) 0%, #0077D4 44%);
+}
+
+.searchTxt {
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    width: 100px;
+    pointer-events: none;
+    gap: 3px;
+}
+
+.searchTxt svg {
+    font-size: 16px;
+    transition: all .175s;
+    flex: .16;
+}
+
+.searchTxt span {
+    font-size: 12px;
+    transition: .35s;
+    flex: .248;
+}
+
+.searchBtn:active .searchTxt svg {
+    font-size: 12px;
+}
+
+.searchOff:active {
+    background-color: #e3eef9;
+    opacity: .5;
+}
+
+.searchBtn:hover .searchOff {
+    background-color: #E7EFFA;
 }
