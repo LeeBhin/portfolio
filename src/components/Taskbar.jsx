@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import '../styles/taskbar.css'
 import { HiOutlineSearch } from "react-icons/hi";
 
-function Taskbar() {
+function Taskbar(searchPopup) {
     const [isSearchOn, setIsSearchOn] = useState(false)
     const searchOnRef = useRef(null);
 
@@ -20,6 +20,7 @@ function Taskbar() {
 
     const handleSearch = () => {
         setIsSearchOn(prevState => !prevState);
+        searchPopup.a(!isSearchOn)
     }
 
     return (
@@ -43,8 +44,6 @@ function Taskbar() {
                     <div className="searchBtnDiv searchOn" ref={searchOnRef}></div>
                 </div>
             </div>
-
-
         </div>
     );
 }
