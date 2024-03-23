@@ -1,5 +1,5 @@
 import '../styles/searchPopup.css'
-import { HiOutlineSearch } from "react-icons/hi";
+import { HiOutlineSearch, HiLocationMarker } from "react-icons/hi";
 import { RiShareBoxLine } from "react-icons/ri";
 
 function SearchPopup() {
@@ -33,26 +33,63 @@ function SearchPopup() {
                         </div>
                         <div className="listWrap">
                             <div className="listIcon"></div>
+                            <div className="listName">None-DB-Login</div>
+                            <RiShareBoxLine />
+                        </div>
+                        <div className="listWrap">
+                            <div className="listIcon"></div>
                             <div className="listName">Windows 11</div>
                             <RiShareBoxLine />
                         </div>
-                        <div className="listWrap">
-                            <div className="listIcon"></div>
-                            <div className="listName">세명랜드</div>
-                            <RiShareBoxLine />
-                        </div>
-                        <div className="listWrap">
-                            <div className="listIcon"></div>
-                            <div className="listName">프로젝트</div>
-                            <RiShareBoxLine />
-                        </div>
+
                     </div>
                 </div>
 
                 <div className="activity">
                     <span className='title'>
-                        이빈에 대해 알아보기
+                        당신을 위한 추천
                     </span>
+
+                    <div className="aboutMe">
+                        <div className="aboutWrap">
+                            <div className="iconAndBg">
+                                <div className="aboutIcon"></div>
+                            </div>
+
+                            <div className="aboutTxt">
+                                내 정보
+                            </div>
+                        </div>
+                        <div className="aboutWrap">
+                            <div className="iconAndBg">
+                                <div className="aboutIcon"></div>
+                            </div>
+
+                            <div className="aboutTxt">
+                                깃허브
+                            </div>
+                        </div>
+                        <div className="aboutWrap">
+                            <div className="iconAndBg">
+                                <div className="aboutIcon"></div>
+                            </div>
+
+                            <div className="aboutTxt">
+                                블로그
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="myImg">
+                        <span className='source'>
+                            출처: 이빈
+                        </span>
+
+
+                        <div className="myImages">
+                            <div className="imageTxt"><HiLocationMarker />수상, 서울특별시교육청</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
