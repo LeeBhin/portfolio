@@ -1,5 +1,6 @@
 .searchPopup {
-    width: 770px;
+    /* width: 770px; */
+    width: 40.5vw;
     height: 720px;
     background-color: rgba(246, 247, 248, 0.86);
     backdrop-filter: blur(45px);
@@ -7,10 +8,9 @@
     border: solid 1px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     position: absolute;
-    bottom: 6.5%;
+    bottom: 0;
     left: 30%;
-    /* bottom: 0;
-    transform: translateY(100%); */
+    transform: translateY(100%);
 }
 
 /* 검색 팝업의 검색바 */
@@ -29,8 +29,8 @@
     align-items: center;
     border-radius: 100px;
     justify-content: flex-start;
-    border-top: solid 1px rgba(154, 174, 192, 0.4);
-    box-shadow: 0 .8px 1px 0px rgba(0, 0, 0, 0.4);
+    border-top: solid 1px rgba(154, 174, 192, 0.5);
+    box-shadow: 0 .8px 1px 0px rgba(0, 0, 0, 0.3);
 }
 
 .searchPopup .searchWrap:hover,
@@ -288,4 +288,14 @@
     bottom: 0;
     font-size: 14px;
     font-weight: bold;
+}
+
+.searchPopup.searchUp {
+    transform: translateY(-8%);
+    transition: .2s ease;
+}
+
+.searchPopup.searchDown {
+    transform: translateY(100%);
+    transition: .2s cubic-bezier(0.88, 0, 0.88, 1);
 }

@@ -12,7 +12,18 @@ function Home() {
 
     useEffect(() => {
         console.log(isSearchOn)
+        searchPopupMove(isSearchOn)
     }, [isSearchOn]);
+
+
+    const searchPopupMove = (isSearchOn) => {
+        const searchElement = document.querySelector('.searchPopup')
+        if (isSearchOn) {
+            searchElement.className = "searchPopup searchUp"
+        } else {
+            searchElement.className = " searchPopup searchDown"
+        }
+    }
 
     return (
         <div className="home">
