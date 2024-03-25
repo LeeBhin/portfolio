@@ -44,6 +44,13 @@ function Taskbar(searchPopup) {
                     <div className="searchBtnDiv searchOn" ref={searchOnRef}></div>
                 </div>
             </div>
+
+            <div className="fileExpBtn">
+                <div className="fileExpWrap">
+                    <div id="hoverDiv"></div>
+                    <div className="fileExImg"></div>
+                </div>
+            </div>
         </div>
     );
 }

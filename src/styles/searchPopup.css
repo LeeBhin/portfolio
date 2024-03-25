@@ -1,7 +1,6 @@
 .searchPopup {
-    /* width: 770px; */
-    width: 40.5vw;
-    height: 720px;
+    width: 770px;
+    height: 710px;
     background-color: rgba(246, 247, 248, 0.86);
     backdrop-filter: blur(45px);
     box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.3);
@@ -10,7 +9,6 @@
     position: absolute;
     bottom: 0;
     left: 30%;
-    transform: translateY(100%);
 }
 
 /* 검색 팝업의 검색바 */
@@ -86,7 +84,7 @@
 }
 
 .searchPopup .shortCut .title {
-    padding: 10px 0 10px 0;
+    padding: 10px 0 8px 0;
     width: 94%;
 }
 
@@ -275,6 +273,11 @@
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+    cursor: pointer;
+}
+
+.searchPopup .myImages:hover {
+    opacity: .8;
 }
 
 .searchPopup .myImg .imageTxt {
