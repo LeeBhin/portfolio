@@ -2,26 +2,48 @@ import '../styles/home.css'
 import Taskbar from "../components/Taskbar";
 import SearchPopup from '../components/SearchPopup';
 import { useEffect, useState } from 'react';
+import StartPopup from '../components/StartPopup';
 
 function Home() {
     const [isSearchOn, setIsSearchOn] = useState(false)
+    const [isStartOn, setIsStartOn] = useState(false)
 
-    const a = isSearchOn => {
+    useEffect(() => {
+        // console.log('search', isSearchOn)
+        // console.log('start', isStartOn)
+        searchPopupMove(isSearchOn)
+        startPopupMove(isStartOn)
+    }, [isSearchOn, isStartOn]);
+
+    const changeSearch = isSearchOn => {
+        if (isStartOn) {
+            setIsStartOn(!isStartOn)
+        }
         setIsSearchOn(isSearchOn)
     }
 
-    useEffect(() => {
-        console.log(isSearchOn)
-        searchPopupMove(isSearchOn)
-    }, [isSearchOn]);
-
+    const changeStart = isStartOn => {
+        if (isSearchOn) {
+            setIsSearchOn(!isSearchOn)
+        }
+        setIsStartOn(isStartOn)
+    }
 
     const searchPopupMove = (isSearchOn) => {
         const searchElement = document.querySelector('.searchPopup')
         if (isSearchOn) {
             searchElement.className = "searchPopup searchUp"
         } else {
-            searchElement.className = " searchPopup searchDown"
+            searchElement.className = "searchPopup searchDown"
+        }
+    }
+
+    const startPopupMove = (isStartOn) => {
+        const searchElement = document.querySelector('.startPopup')
+        if (isStartOn) {
+            searchElement.className = "startPopup startUp"
+        } else {
+            searchElement.className = "startPopup startDown"
         }
     }
 
@@ -29,8 +51,14 @@ function Home() {
         <div className="home">
             <div className="background">
             </div>
-            <Taskbar a={a} />
+            <Taskbar
+                changeSearch={changeSearch}
+                changeStart={changeStart}
+                isSearch={isSearchOn}
+                isStart={isStartOn}
+            />
             <SearchPopup />
+            <StartPopup />
         </div>
     );
 }

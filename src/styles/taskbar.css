@@ -94,7 +94,7 @@
 
 .taskbar .searchTxt svg {
     font-size: 16px;
-    transition: all .175s;
+    transition: color .3s, transform .13s;
     flex: .16;
 }
 
@@ -105,7 +105,7 @@
 }
 
 .taskbar .searchBtn:active .searchTxt svg {
-    font-size: 12px;
+    transform: scale(77%);
 }
 
 .taskbar .searchOff:active {
@@ -156,6 +156,7 @@
     opacity: 1;
 }
 
-.taskbar .fileExpBtn:active #hoverDiv {
+.taskbar .fileExpBtn:active #hoverDiv,
+.taskbar .startBtn:active #hoverDiv {
     opacity: 0.7;
 }

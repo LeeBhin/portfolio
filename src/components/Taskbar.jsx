@@ -2,9 +2,17 @@ import { useEffect, useRef, useState } from 'react';
 import '../styles/taskbar.css'
 import { HiOutlineSearch } from "react-icons/hi";
 
-function Taskbar(searchPopup) {
+function Taskbar({ changeSearch, changeStart, isSearch, isStart }) {
     const [isSearchOn, setIsSearchOn] = useState(false)
+    const [isStartOn, setIsStartOn] = useState(false)
     const searchOnRef = useRef(null);
+
+    useEffect(() => {
+        setIsSearchOn(isSearch)
+        setIsStartOn(isStart)
+        console.log('search', isSearch)
+        console.log('start', isStart)
+    }, [isSearch, isStart]);
 
     useEffect(() => {
         if (isSearchOn) {
@@ -20,15 +28,19 @@ function Taskbar(searchPopup) {
 
     const handleSearch = () => {
         setIsSearchOn(prevState => !prevState);
-        searchPopup.a(!isSearchOn)
+        changeSearch(!isSearchOn);
+    }
+    const handleStart = () => {
+        setIsStartOn(prevState => !prevState);
+        changeStart(!isStartOn);
     }
 
     return (
         <div className="taskbar">
 
-            <div className='startBtn'>
+            <div className='startBtn' onClick={handleStart}>
                 <div className="startBtnWrap">
-                    <div id="hoverDiv"></div>
+                    <div id="hoverDiv" style={{ opacity: isStartOn ? "1" : "" }}></div>
                     <div className="startBtnImg"></div>
                 </div>
             </div>
