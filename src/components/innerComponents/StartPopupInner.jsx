@@ -1,5 +1,6 @@
 import { HiOutlineSearch } from "react-icons/hi";
 
+
 function StartPopupInner() {
     const skillIcon = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
     const skillName = ['HTML', 'CSS', 'JvaScript', 'Python', 'React', 'Java', 'JSP', 'MySQL', 'Github', 'Photoshop', 'PowerPoint', 'Excel', 'Word', 'Access', '한컴오피스 한글', 'Visual Studio Code', 'Brackets', 'IntelliJ IDEA', 'Firebase', 'Socket.io', 'Express.js', 'Notion', 'Premiere Pro', 'After Effects']
@@ -55,7 +56,9 @@ function StartPopupInner() {
                     </div>
                 </div>
 
+
             </div>
+
         </>
     );
 }

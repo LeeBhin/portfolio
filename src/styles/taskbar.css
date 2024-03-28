@@ -1,6 +1,6 @@
 .taskbar {
     width: 100vw;
-    height: 46px;
+    height: 47px;
     background: radial-gradient(circle, #D5DDF1, #E3EEF9);
     box-shadow: 0px -1px 0px .1px #B6BDC4;
     position: fixed;

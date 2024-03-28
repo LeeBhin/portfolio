@@ -39,11 +39,11 @@ function Home() {
     }
 
     const startPopupMove = (isStartOn) => {
-        const searchElement = document.querySelector('.startPopup')
+        const searchElement = document.querySelector('.startPopupWrap')
         if (isStartOn) {
-            searchElement.className = "startPopup startUp"
+            searchElement.className = "startPopupWrap startUp"
         } else {
-            searchElement.className = "startPopup startDown"
+            searchElement.className = "startPopupWrap startDown"
         }
     }
 
