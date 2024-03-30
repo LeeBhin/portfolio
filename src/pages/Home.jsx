@@ -7,7 +7,7 @@ import StartPopup from '../components/StartPopup';
 function Home() {
     const [isSearchOn, setIsSearchOn] = useState(false)
     const [isStartOn, setIsStartOn] = useState(false)
-    
+
     useEffect(() => {
         togglePopupMove('.searchPopup', isSearchOn, 'searchUp', 'searchDown')
         togglePopupMove('.startPopupWrap', isStartOn, 'startUp', 'startDown')
@@ -22,15 +22,6 @@ function Home() {
     const changeStart = (isStartOn) => {
         if (isSearchOn) setIsSearchOn(false)
         setIsStartOn(isStartOn)
-        togglePopupMove('.startPopupWrap', isStartOn, 'startUp', 'startDown')
-    }
-
-
-    const searchPopupMove = (isSearchOn) => {
-        togglePopupMove('.searchPopup', isSearchOn, 'searchUp', 'searchDown')
-    }
-
-    const startPopupMove = (isStartOn) => {
         togglePopupMove('.startPopupWrap', isStartOn, 'startUp', 'startDown')
     }
 

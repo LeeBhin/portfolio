@@ -63,6 +63,8 @@ function Taskbar({ changeSearch, changeStart, isSearch, isStart }) {
                     <div className="fileExImg"></div>
                 </div>
             </div>
+
+            
         </div>
     );
 }
