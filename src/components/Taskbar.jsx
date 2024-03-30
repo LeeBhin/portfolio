@@ -1,11 +1,40 @@
 import { useEffect, useRef, useState } from 'react';
 import '../styles/taskbar.css'
 import { HiOutlineSearch } from "react-icons/hi";
+import { GoBell } from "react-icons/go";
 
 function Taskbar({ changeSearch, changeStart, isSearch, isStart }) {
     const [isSearchOn, setIsSearchOn] = useState(false)
     const [isStartOn, setIsStartOn] = useState(false)
+    const [time, setTime] = useState(new Date());
     const searchOnRef = useRef(null);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setTime(new Date());
+        }, 1000);
+
+        return () => clearInterval(intervalId);
+    }, []);
+
+    const formatTime = (time) => {
+        const hours = time.getHours();
+        const minutes = time.getMinutes();
+        const period = hours >= 12 ? '오후' : '오전';
+        const formattedHours = hours % 12 || 12;
+        const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+
+        return `${period} ${formattedHours}:${formattedMinutes}`;
+    }
+
+    const formatDate = (date) => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 1을 더하고 두 자리 숫자로 만듭니다.
+        const day = String(date.getDate()).padStart(2, '0'); // 일도 두 자리 숫자로 만듭니다.
+
+        return `${year}-${month}-${day}`;
+    }
+
 
     useEffect(() => {
         setIsSearchOn(isSearch)
@@ -64,7 +93,14 @@ function Taskbar({ changeSearch, changeStart, isSearch, isStart }) {
                 </div>
             </div>
 
-            
+
+            <div className="dateAndAlarm">
+                <div className="dateWrap">
+                    <div className="time">{formatTime(time)}</div>
+                    <div className="date">{formatDate(time)}</div>
+                </div>
+                <div className="alarm"><GoBell /></div>
+            </div>
         </div>
     );
 }
