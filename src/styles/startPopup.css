@@ -119,6 +119,10 @@
     transform: scale(.83);
 }
 
+.startPopup .listWrap:active {
+    opacity: .75;
+}
+
 .startPopup .skills .listWrap:hover {
     background-color: rgba(249, 251, 254, 0.9);
 }
@@ -159,13 +163,18 @@
     background-color: rgba(249, 251, 254, 0.9);
 }
 
-.startPopup .photoWrap .photoInfo {
+.startPopup .photos .photoWrap:active {
+    opacity: .75;
+}
+
+.startPopup .photoWrap {
     margin-left: 10px;
 }
 
 .startPopup .photos .photoInfo {
     display: flex;
     flex-direction: column;
+    margin-left: 8px;
 }
 
 .startPopup .photos {
@@ -178,10 +187,18 @@
 }
 
 .startPopup .photoList .photoIcon {
-    width: 30px;
-    height: 30px;
-    background-color: skyblue;
+    width: 40px;
+    height: auto;
     margin-left: 13px;
+}
+
+.startPopup .photoInfo .photoName {
+    font-size: 12.5px;
+}
+
+.startPopup .photoInfo .photoDate {
+    font-size: 12px;
+    color: #5E5D62;
 }
 
 

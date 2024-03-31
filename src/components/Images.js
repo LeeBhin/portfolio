@@ -23,6 +23,10 @@ import FIREBASE from '../images/firebase.png';
 import SOCKET from '../images/socket.png';
 import EXPRESS from '../images/express.png';
 
+import HRDK from '../images/hrdk.png'
+import KCCI from '../images/kcci.png'
+import KPC from '../images/kpc.png'
+
 const Images = {
     HTML,
     CSS,
@@ -47,7 +51,11 @@ const Images = {
     INTELLIJ,
     FIREBASE,
     SOCKET,
-    EXPRESS
+    EXPRESS,
+
+    HRDK,
+    KCCI,
+    KPC,
 };
 
 export { Images };
