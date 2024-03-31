@@ -29,8 +29,8 @@ function Taskbar({ changeSearch, changeStart, isSearch, isStart }) {
 
     const formatDate = (date) => {
         const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 1을 더하고 두 자리 숫자로 만듭니다.
-        const day = String(date.getDate()).padStart(2, '0'); // 일도 두 자리 숫자로 만듭니다.
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
 
         return `${year}-${month}-${day}`;
     }

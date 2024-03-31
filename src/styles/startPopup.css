@@ -11,7 +11,7 @@
 .startPopup {
     width: 640px;
     height: 660px;
-    background-color: rgba(245, 250, 255, 0.9);
+    background-color: rgba(245, 250, 255, 0.92);
     backdrop-filter: blur(50px);
     border-radius: 8px 8px 0 0;
     position: relative;
@@ -86,7 +86,7 @@
 }
 
 .startPopup .skills {
-    flex: .595;
+    flex: .592;
     overflow-y: scroll;
 }
 
@@ -103,19 +103,20 @@
 
 .startPopup .skills .listWrap {
     width: 96.6px;
-    height: 85px;
+    height: 84.5px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     border-radius: 5px;
     text-align: center;
     font-size: 14px;
     transition: .12s;
+    gap: 3px;
 }
 
 .startPopup .listWrap:active .listIcon {
-    transform: scale(.85);
+    transform: scale(.83);
 }
 
 .startPopup .skills .listWrap:hover {
@@ -123,14 +124,18 @@
 }
 
 .startPopup .skillList .listIcon {
-    width: 33px;
-    height: 33px;
-    background-color: skyblue;
-    transition: .2s;
+    width: auto;
+    height: 30px;
+    transition: .15s ease;
 }
 
 .startPopup .skillList .listName {
-    width: 90%;
+    width: 80%;
+    font-size: 12.5px;
+}
+
+.startPopup .skills .listIcon {
+    margin-top: 13px;
 }
 
 /* 시작 팝업의 사진 */
