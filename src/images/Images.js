@@ -27,6 +27,8 @@ import HRDK from '../images/hrdk.png'
 import KCCI from '../images/kcci.png'
 import KPC from '../images/kpc.png'
 
+import FILE from '../images/fileexplorer.png'
+
 const Images = {
     HTML,
     CSS,
@@ -56,6 +58,8 @@ const Images = {
     HRDK,
     KCCI,
     KPC,
+
+    FILE,
 };
 
 export { Images };

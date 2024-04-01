@@ -24,6 +24,7 @@
     background-color: #F9FCFE;
     align-items: center;
     border-radius: 100px;
+    box-shadow: 0 3.5px 0px -3px rgba(100, 100, 100, .9);
     justify-content: flex-start;
     border: solid 1px rgba(154, 174, 192, 0.4);
     border-bottom: none;

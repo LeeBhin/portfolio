@@ -1,5 +1,5 @@
 import { HiOutlineSearch } from "react-icons/hi";
-import { Images } from "../../components/Images";
+import { Images } from "../../images/Images";
 
 function StartPopupInner() {
     const skillIcon = [Images.HTML, Images.CSS, Images.JS, Images.JQUERY, Images.PYTHON, Images.REACT, Images.VUE, Images.NEXT, Images.JAVA, Images.JSP, Images.SQL, Images.FIREBASE, Images.SOCKET, Images.EXPRESS, Images.GITHUB, Images.VSCODE, Images.BRACKETS, Images.INTELLIJ, Images.PHOTOSHOP, Images.PPT, Images.EXCEL, Images.WORD, Images.ACCESS, Images.HANGEUL]

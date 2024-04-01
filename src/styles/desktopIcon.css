@@ -1,0 +1,21 @@
+.desktopIcon {
+    width: 100px;
+    height: 80px;
+}
+
+.desktopIcon .iconHover {}
+
+.desktopIcon .iconWrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.desktopIcon .iconWrap img {
+    max-width: 40px;
+}
+
+.desktopIcon .iconWrap .name {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}

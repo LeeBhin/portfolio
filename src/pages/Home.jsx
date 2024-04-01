@@ -3,6 +3,8 @@ import Taskbar from "../components/Taskbar";
 import SearchPopup from '../components/SearchPopup';
 import { useEffect, useState } from 'react';
 import StartPopup from '../components/StartPopup';
+import DesktopIcon from '../components/DesktopIcon';
+import { Images } from '../images/Images';
 
 function Home() {
     const [isSearchOn, setIsSearchOn] = useState(false)
@@ -46,6 +48,7 @@ function Home() {
     return (
         <div className="home">
             <div className="background">
+                <DesktopIcon Icon={Images.FILE} Name={'사진'} />
             </div>
             <Taskbar
                 changeSearch={changeSearch}
