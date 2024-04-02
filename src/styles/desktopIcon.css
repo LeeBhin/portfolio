@@ -1,21 +1,49 @@
 .desktopIcon {
-    width: 100px;
-    height: 80px;
+    width: 95px;
+    height: 73px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 
-.desktopIcon .iconHover {}
+.desktopIcon:hover .iconHover {
+    opacity: 1;
+}
+
+.desktopIcon .iconHover {
+    opacity: 0;
+    width: 78px;
+    height: 65px;
+    position: absolute;
+    background-color: rgba(250, 250, 250, 0.13);
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
 
 .desktopIcon .iconWrap {
     display: flex;
     flex-direction: column;
+    gap: 5px;
+    position: absolute;
 }
 
 .desktopIcon .iconWrap img {
-    max-width: 40px;
+    max-width: 45px;
+    height: auto;
 }
 
 .desktopIcon .iconWrap .name {
+    text-align: center;
     color: white;
+    font-family: 'Segoe UI';
     font-size: 14px;
-    font-weight: bold;
+    font-weight: lighter;
+    text-shadow:
+        0px 0px 2px rgba(0, 0, 0, 1),
+        0px 1px 1px rgba(0, 0, 0, .8),
+        0px 1px 2px rgba(0, 0, 0, .8),
+        0px 0.5px 3px rgba(0, 0, 0, 1),
+        0px 0.5px 1.5px rgba(0, 0, 0, 1),
+        0px 0.5px 1.5px rgba(0, 0, 0, 1),
+        0px 0.5px 2px rgba(0, 0, 0, 1);
 }

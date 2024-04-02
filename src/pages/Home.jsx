@@ -48,7 +48,9 @@ function Home() {
     return (
         <div className="home">
             <div className="background">
-                <DesktopIcon Icon={Images.FILE} Name={'사진'} />
+                <DesktopIcon Icon={Images.FOLDER} Name={'react'} />
+                <DesktopIcon Icon={Images.FOLDER} Name={'react'} />
+                <DesktopIcon Icon={Images.FOLDER} Name={'react'} />
             </div>
             <Taskbar
                 changeSearch={changeSearch}

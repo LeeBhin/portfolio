@@ -27,7 +27,7 @@ import HRDK from '../images/hrdk.png'
 import KCCI from '../images/kcci.png'
 import KPC from '../images/kpc.png'
 
-import FILE from '../images/fileexplorer.png'
+import FOLDER from '../images/folder.png'
 
 const Images = {
     HTML,
@@ -59,7 +59,7 @@ const Images = {
     KCCI,
     KPC,
 
-    FILE,
+    FOLDER,
 };
 
 export { Images };
