@@ -1,14 +1,35 @@
 import '../styles/home.css'
 import Taskbar from "../components/Taskbar";
 import SearchPopup from '../components/SearchPopup';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import StartPopup from '../components/StartPopup';
 import DesktopIcon from '../components/DesktopIcon';
 import { Images } from '../images/Images';
 
 function Home() {
-    const [isSearchOn, setIsSearchOn] = useState(false)
-    const [isStartOn, setIsStartOn] = useState(false)
+    const [isSearchOn, setIsSearchOn] = useState(false);
+    const [isStartOn, setIsStartOn] = useState(false);
+    const [activeIcon, setActiveIcon] = useState(null);
+    const desktopRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            const clickedIcon = event.target.closest('.desktopIcon');
+            if (!clickedIcon) {
+                setActiveIcon(null);
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
+
+    const handleIconClick = (iconName) => {
+        setActiveIcon(iconName);
+    };
 
     useEffect(() => {
         togglePopupMove('.searchPopup', isSearchOn, 'searchUp', 'searchDown')
@@ -44,13 +65,12 @@ function Home() {
         }
     }
 
-
     return (
         <div className="home">
-            <div className="background">
-                <DesktopIcon Icon={Images.FOLDER} Name={'react'} />
-                <DesktopIcon Icon={Images.FOLDER} Name={'react'} />
-                <DesktopIcon Icon={Images.FOLDER} Name={'react'} />
+            <div className="background" ref={desktopRef}>
+                <DesktopIcon Icon={Images.FOLDER} Name={'react'} onClick={() => handleIconClick('react')} isActive={activeIcon === 'react'} />
+                <DesktopIcon Icon={Images.FOLDER} Name={'react'} onClick={() => handleIconClick('react2')} isActive={activeIcon === 'react2'} />
+                <DesktopIcon Icon={Images.FOLDER} Name={'react'} onClick={() => handleIconClick('react3')} isActive={activeIcon === 'react3'} />
             </div>
             <Taskbar
                 changeSearch={changeSearch}

@@ -3,7 +3,7 @@ import { Images } from "../../images/Images";
 
 function StartPopupInner() {
     const skillIcon = [Images.HTML, Images.CSS, Images.JS, Images.JQUERY, Images.PYTHON, Images.REACT, Images.VUE, Images.NEXT, Images.JAVA, Images.JSP, Images.SQL, Images.FIREBASE, Images.SOCKET, Images.EXPRESS, Images.GITHUB, Images.VSCODE, Images.BRACKETS, Images.INTELLIJ, Images.PHOTOSHOP, Images.PPT, Images.EXCEL, Images.WORD, Images.ACCESS, Images.HANGEUL]
-    const skillName = ['HTML', 'CSS', 'JavaScript', 'Jquery', 'Python', 'React.js', 'Vue.js', 'Next.js', 'Java', 'JSP', 'OracleSQL', 'Firebase', 'Socket.io', 'Express.js', 'Github', 'Visual Studio Code', 'Brackets', 'IntelliJ IDEA', 'Photoshop', 'PowerPoint', 'Excel', 'Word', 'Access', '한컴오피스 한글']
+    const skillName = ['HTML', 'CSS', 'JavaScript', 'Jquery', 'Python', 'React.js', 'Vue.js', 'Next.js', 'Java', 'JSP', 'Oracle SQL', 'Firebase', 'Socket.io', 'Express.js', 'Github', 'Visual Studio Code', 'Brackets', 'IntelliJ IDEA', 'Photoshop', 'PowerPoint', 'Excel', 'Word', 'Access', '한컴오피스 한글']
     const photoIcon = [Images.HRDK, Images.HRDK, Images.KCCI, Images.KCCI, Images.HRDK, Images.KPC]
     const photoName = ['정보기기운용기능사', '웹디자인기능사', '컴퓨터활용능력 1급', '컴퓨터활용능력 2급', '정보처리기능사', 'GTQ 1급']
     const photoDate = ['2023.07.05.', '2022.09.08.', '2022.04.08.', '2021.03.05.', '2019.12.26.', '2019.05.17.']

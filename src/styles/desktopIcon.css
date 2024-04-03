@@ -4,10 +4,16 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    margin-bottom: 25px;
+}
+
+.desktopIcon.active .iconHover {
+    background-color: rgba(250, 250, 250, .2);
+    opacity: 1;
 }
 
 .desktopIcon:hover .iconHover {
-    opacity: 1;
+    opacity: .65;
 }
 
 .desktopIcon .iconHover {
@@ -15,7 +21,7 @@
     width: 78px;
     height: 65px;
     position: absolute;
-    background-color: rgba(250, 250, 250, 0.13);
+    background-color: rgba(250, 250, 250, 0.15);
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.05);
     border-radius: 3px;
 }

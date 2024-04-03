@@ -1,11 +1,22 @@
-import '../styles/desktopIcon.css'
+import { useState, useEffect } from 'react';
+import '../styles/desktopIcon.css';
 
-function DesktopIcon({ Icon, Name }) {
+function DesktopIcon({ Icon, Name, onClick, isActive }) {
+    const [isActiveState, setIsActiveState] = useState(isActive);
+
+    useEffect(() => {
+        setIsActiveState(isActive);
+    }, [isActive]);
+
+    const handleClick = () => {
+        onClick(Name);
+    };
+
     return (
-        <div className="desktopIcon">
+        <div className={`desktopIcon ${isActiveState ? 'active' : ''}`} onClick={handleClick}>
             <div className="iconHover"></div>
             <div className="iconWrap">
-                <img src={Icon} alt={Name + 'Icon'} />
+                <img src={Icon} alt={`${Name}Icon`} />
                 <div className="name">{Name}</div>
             </div>
         </div>
