@@ -33,7 +33,6 @@ function StartPopupInner() {
                 <div className="startWrap">
                     <HiOutlineSearch />
                     <input type="text" placeholder='앱, 언어 및 작품 검색' />
-                    <div className="startImg"></div>
                 </div>
             </div>
 

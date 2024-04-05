@@ -27,6 +27,38 @@ function Home() {
         };
     }, []);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            const clickedIcon = event.target.closest('.searchPopup');
+            const searchIcon = event.target.closest('.searchBtn');
+            if (!clickedIcon && !searchIcon) {
+                setIsSearchOn(false);
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [isSearchOn]);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            const clickedIcon = event.target.closest('.startPopupWrap');
+            const startIcon = event.target.closest('.startBtn');
+            if (!clickedIcon && !startIcon) {
+                setIsStartOn(false);
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [isSearchOn]);
+
     const handleIconClick = (iconName) => {
         setActiveIcon(iconName);
     };
