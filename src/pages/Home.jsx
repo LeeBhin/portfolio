@@ -100,9 +100,10 @@ function Home() {
     return (
         <div className="home">
             <div className="background" ref={desktopRef}>
-                <DesktopIcon Icon={Images.FOLDER} Name={'react'} onClick={() => handleIconClick('react')} isActive={activeIcon === 'react'} />
-                <DesktopIcon Icon={Images.FOLDER} Name={'react'} onClick={() => handleIconClick('react2')} isActive={activeIcon === 'react2'} />
-                <DesktopIcon Icon={Images.FOLDER} Name={'react'} onClick={() => handleIconClick('react3')} isActive={activeIcon === 'react3'} />
+                <DesktopIcon Icon={Images.USERFOLDER} Name={'이빈'} onClick={() => handleIconClick('my')} isActive={activeIcon === 'my'} />
+                <DesktopIcon Icon={Images.FOLDER} Name={'자격증'} onClick={() => handleIconClick('cert')} isActive={activeIcon === 'cert'} />
+                <DesktopIcon Icon={Images.FOLDER} Name={'포트폴리오'} onClick={() => handleIconClick('port')} isActive={activeIcon === 'port'} />
+                <DesktopIcon Icon={Images.PICTURESFOLDER} Name={'사진'} onClick={() => handleIconClick('img')} isActive={activeIcon === 'img'} />
             </div>
             <Taskbar
                 changeSearch={changeSearch}
