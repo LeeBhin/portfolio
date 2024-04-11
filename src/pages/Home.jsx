@@ -4,6 +4,7 @@ import SearchPopup from '../components/SearchPopup';
 import { useEffect, useRef, useState } from 'react';
 import StartPopup from '../components/StartPopup';
 import DesktopIcon from '../components/DesktopIcon';
+import Folder from '../components/Folder'
 import { Images } from '../images/Images';
 
 function Home() {
@@ -100,6 +101,9 @@ function Home() {
     return (
         <div className="home">
             <div className="background" ref={desktopRef}>
+
+                <Folder />
+
                 <DesktopIcon Icon={Images.USERFOLDER} Name={'이빈'} onClick={() => handleIconClick('my')} isActive={activeIcon === 'my'} />
                 <DesktopIcon Icon={Images.FOLDER} Name={'자격증'} onClick={() => handleIconClick('cert')} isActive={activeIcon === 'cert'} />
                 <DesktopIcon Icon={Images.FOLDER} Name={'포트폴리오'} onClick={() => handleIconClick('port')} isActive={activeIcon === 'port'} />
