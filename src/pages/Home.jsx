@@ -102,13 +102,13 @@ function Home() {
         <div className="home">
             <div className="background" ref={desktopRef}>
 
-                <Folder />
 
                 <DesktopIcon Icon={Images.USERFOLDER} Name={'이빈'} onClick={() => handleIconClick('my')} isActive={activeIcon === 'my'} />
                 <DesktopIcon Icon={Images.FOLDER} Name={'자격증'} onClick={() => handleIconClick('cert')} isActive={activeIcon === 'cert'} />
                 <DesktopIcon Icon={Images.FOLDER} Name={'포트폴리오'} onClick={() => handleIconClick('port')} isActive={activeIcon === 'port'} />
                 <DesktopIcon Icon={Images.PICTURESFOLDER} Name={'사진'} onClick={() => handleIconClick('img')} isActive={activeIcon === 'img'} />
             </div>
+            <Folder />
             <Taskbar
                 changeSearch={changeSearch}
                 changeStart={changeStart}
