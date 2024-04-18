@@ -31,6 +31,7 @@ import FOLDER from '../images/folder.png'
 import USERFOLDER from '../images/userfolder.png'
 import PICTURESFOLDER from '../images/picturesfolder.png'
 import DESKTOP from '../images/desktop.png'
+import HOME from '../images/home.png'
 
 const Images = {
     HTML,
@@ -66,6 +67,7 @@ const Images = {
     USERFOLDER,
     PICTURESFOLDER,
     DESKTOP,
+    HOME,
 };
 
 export { Images };
