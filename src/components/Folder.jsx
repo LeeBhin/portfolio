@@ -1,5 +1,6 @@
 import '../styles/folder.css'
 import { Images } from '../images/Images';
+import { CgClose } from "react-icons/cg";
 
 function Folder({ }) {
     return (
@@ -15,7 +16,7 @@ function Folder({ }) {
                                 <div className="iconTxt">홈</div>
                             </div>
 
-                            <div className="tabClose">X</div>
+                            <div className="tabClose"><CgClose /></div>
                         </div>
                         <div className="tabPlus">+</div>
                     </div>

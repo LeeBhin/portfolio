@@ -1,5 +1,5 @@
 .folder {
-    width: 60vw;
+    width: 50vw;
     height: 60vh;
     position: absolute;
     left: 50%;
@@ -32,20 +32,29 @@
 
 .folder .folderHeader .folderTab {
     background-color: aliceblue;
-    height: 20px;
-    width: 150px;
+    height: 30px;
+    width: 200px;
     border-radius: 6px 6px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px;
 
-    font-size: 12px;
+    font-weight: bold;
+}
+
+.folder .folderTab .iconTxt {
+    font-size: 13px;
+}
+
+.folder .folderTab .tabClose {
+    font-size: 13px;
+    padding: 15px;
 }
 
 .folder .folderHeader .folderTab .iconWrap {
     display: flex;
     gap: 10px;
+    padding: 8px;
 }
 
 .folder .folderTab .tabIcon img {
