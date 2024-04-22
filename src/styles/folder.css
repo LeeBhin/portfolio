@@ -5,15 +5,14 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 5px;
-
-    background-color: lightblue;
+    border-radius: 10px;
+    background-color: #ffffff;
 }
 
 .folder .folderHeader {
-    background-color: rgb(124, 124, 124);
+    background-color: #CFDCEC;
     height: 36px;
-    border-radius: 5px 5px 0 0;
+    border-radius: 10px 10px 0 0;
     display: flex;
     align-items: flex-end;
 }
@@ -28,17 +27,18 @@
 .folder .folderHeader .tabWrap {
     display: flex;
     align-items: center;
+    gap: 5px;
 }
 
 .folder .folderHeader .folderTab {
-    background-color: aliceblue;
+    background-color: #F4F6F9;
     height: 30px;
-    width: 200px;
+    width: 230px;
     border-radius: 6px 6px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    border-bottom: #E6ECF1 solid 1px;
     font-weight: bold;
 }
 
@@ -48,7 +48,14 @@
 
 .folder .folderTab .tabClose {
     font-size: 13px;
-    padding: 15px;
+    width: 30px;
+    height: 22px;
+    border-radius: 5px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E8ECF1;
 }
 
 .folder .folderHeader .folderTab .iconWrap {
@@ -63,6 +70,12 @@
 
 .folder .tabWrap .tabPlus {
     width: 30px;
+    height: 22px;
+    border-radius: 5px;
+    background-color: #C6D5E4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .folder .minMaxWrap {
@@ -71,15 +84,138 @@
     height: 100%;
 }
 
+.folder .minMaxWrap div {
+    width: 50px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.folder .minMaxWrap .minBtn,
+.folder .minMaxWrap .maxBtn {
+    background-color: #C6D5E4;
+}
+
+.folder .minMaxWrap .closeBtn {
+    border-radius: 0 10px 0 0;
+    background-color: #C42B1C;
+    color: white;
+}
+
 .folder .midHeader {
-    background-color: rgb(126, 190, 190);
+    background-color: #F4F6F9;
     width: 100%;
-    height: 35px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
 }
 
 .folder .midHeader .moveWrap {
     display: flex;
     align-items: center;
-    gap: 5px;
     height: 100%;
+    flex: .2;
+    gap: 5px;
+    justify-content: space-evenly;
+}
+
+.folder .midHeader .moveWrap div {
+    background-color: #E8ECF1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.folder .midHeader .directory {
+    display: flex;
+    flex: .7;
+    height: 28px;
+    border-radius: 5px;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+}
+
+.folder .midHeader .directory div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 21px;
+    height: 21px;
+}
+
+.folder .midHeader .directory .txt {
+    width: 28px;
+}
+
+.folder .midHeader .directory .icon {
+    padding: 8px;
+}
+
+.folder .midHeader .directory #btn {
+    background-color: #F2F3F4;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.folder .midHeader .searchWrap {
+    position: relative;
+}
+
+.folder .midHeader .search {
+    display: flex;
+    flex: .25;
+    background-color: #FCFCFD;
+    height: 28px;
+    border-radius: 5px;
+}
+
+.folder .search input {
+    border: none;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.folder .midHeader .search .searchIcon {
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+.folder .botHeader {
+    display: flex;
+    background-color: #ffffff;
+    box-shadow: 0 -0.5px 0 .4px rgb(192, 204, 217),
+        0 0.5px 0 .4px rgb(192, 204, 217);
+    align-items: center;
+}
+
+.folder .botHeader .newWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    flex: .15;
+    height: 50px;
+}
+
+.folder .botHeader .newWrap div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.folder .botHeader .toolWrap {
+    display: flex;
+    height: 30px;
+    flex: .3;
+    justify-content: space-around;
+    align-items: center;
+    border-left: solid 1px rgba(128, 128, 128, 0.2);
 }
