@@ -1,5 +1,5 @@
 .folder {
-    width: 50vw;
+    width: 58vw;
     height: 60vh;
     position: absolute;
     left: 50%;
@@ -11,10 +11,11 @@
 
 .folder .folderHeader {
     background-color: #CFDCEC;
-    height: 36px;
+    height: 38px;
     border-radius: 10px 10px 0 0;
     display: flex;
     align-items: flex-end;
+    position: relative;
 }
 
 .folder .folderHeader .topHeader {
@@ -22,24 +23,26 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 38px;
 }
 
 .folder .folderHeader .tabWrap {
+    height: 38px;
     display: flex;
-    align-items: center;
-    gap: 5px;
+    align-items: end;
+    width: 282px;
+    position: relative;
+    margin-left: 2px;
 }
 
 .folder .folderHeader .folderTab {
-    background-color: #F4F6F9;
-    height: 30px;
-    width: 230px;
-    border-radius: 6px 6px 0 0;
+    position: absolute;
+    bottom: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: #E6ECF1 solid 1px;
     font-weight: bold;
+    width: 250px;
 }
 
 .folder .folderTab .iconTxt {
@@ -55,13 +58,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #E8ECF1;
+    position: absolute;
+    right: 4px;
+}
+
+.folder .folderTab .tabClose:hover {
+    background-color: #E5E9EE;
 }
 
 .folder .folderHeader .folderTab .iconWrap {
     display: flex;
     gap: 10px;
     padding: 8px;
+    position: absolute;
+    margin: 3px;
 }
 
 .folder .folderTab .tabIcon img {
@@ -72,10 +82,17 @@
     width: 30px;
     height: 22px;
     border-radius: 5px;
-    background-color: #C6D5E4;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    right: 0;
+    bottom: 4px;
+    font-size: 13px;
+}
+
+.folder .tabWrap .tabPlus:hover {
+    background-color: #C8D4E4;
 }
 
 .folder .minMaxWrap {
@@ -85,58 +102,69 @@
 }
 
 .folder .minMaxWrap div {
-    width: 50px;
+    width: 45px;
     height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: .2s;
+}
+
+.folder .minMaxWrap .minBtn:hover,
+.folder .minMaxWrap .maxBtn:hover {
+    background-color: #C9D2E3;
 }
 
 .folder .minMaxWrap .minBtn,
-.folder .minMaxWrap .maxBtn {
-    background-color: #C6D5E4;
-}
+.folder .minMaxWrap .maxBtn {}
 
 .folder .minMaxWrap .closeBtn {
     border-radius: 0 10px 0 0;
+}
+
+.folder .minMaxWrap .closeBtn:hover {
     background-color: #C42B1C;
     color: white;
 }
 
 .folder .midHeader {
-    background-color: #F4F6F9;
+    background-color: #F0F5F9;
     width: 100%;
-    height: 40px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    gap: 10px;
+    gap: 8px;
 }
 
 .folder .midHeader .moveWrap {
     display: flex;
     align-items: center;
     height: 100%;
-    flex: .2;
-    gap: 5px;
+    flex: .27;
+    gap: 6px;
+    margin-left: 3px;
     justify-content: space-evenly;
 }
 
 .folder .midHeader .moveWrap div {
-    background-color: #E8ECF1;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 26px;
-    height: 26px;
+    width: 34px;
+    height: 34px;
     border-radius: 6px;
     font-size: 16px;
 }
 
+.folder .midHeader .moveWrap div:hover {
+    background-color: #E7EDF1;
+}
+
 .folder .midHeader .directory {
     display: flex;
-    flex: .7;
-    height: 28px;
+    flex: .68;
+    height: 33px;
     border-radius: 5px;
     align-items: center;
     background-color: rgb(255, 255, 255);
@@ -156,35 +184,37 @@
 
 .folder .midHeader .directory .icon {
     padding: 8px;
+    color: #666666;
 }
 
 .folder .midHeader .directory #btn {
-    background-color: #F2F3F4;
     border-radius: 6px;
     font-size: 13px;
+}
+
+.folder .midHeader .search {
+    flex: .37;
+    background-color: #FCFCFD;
+    height: 33px;
+    border-radius: 5px;
+    margin-right: 10px;
 }
 
 .folder .midHeader .searchWrap {
     position: relative;
 }
 
-.folder .midHeader .search {
-    display: flex;
-    flex: .25;
-    background-color: #FCFCFD;
-    height: 28px;
-    border-radius: 5px;
-}
-
 .folder .search input {
     border: none;
-    height: 100%;
     border-radius: 5px;
+    height: 30px;
+    outline: none;
+    margin-left: 10px;
 }
 
 .folder .midHeader .search .searchIcon {
     position: absolute;
-    top: 0;
+    top: 3px;
     right: 10px;
 }
 
@@ -194,6 +224,7 @@
     box-shadow: 0 -0.5px 0 .4px rgb(192, 204, 217),
         0 0.5px 0 .4px rgb(192, 204, 217);
     align-items: center;
+    height: 53px;
 }
 
 .folder .botHeader .newWrap {
