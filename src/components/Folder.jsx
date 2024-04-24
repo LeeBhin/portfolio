@@ -85,16 +85,20 @@ function Folder({ }) {
                     <div className="sort">
                         <div className="sortWrap" id='visionWrap'>
                             <div className="sortIcon"><img src={Images.SORT} alt="" /></div>
-                            <div className="sortTxt">정렬</div>
-                            <div className="sortDrop"><GrFormDown size={"12px"} color='gray' /></div>
+                            <div className="inWrap">
+                                <div className="sortTxt">정렬</div>
+                                <div className="sortDrop"><GrFormDown size={"12px"} color='gray' /></div>
+                            </div>
                         </div>
                     </div>
 
                     <div className="view">
                         <div className="viewWrap" id='visionWrap'>
                             <div className="viewIcon"><img src={Images.VIEWBIG} alt="" /></div>
-                            <div className="viewTxt">보기</div>
-                            <div className="viewDrop"><GrFormDown size={"12px"} color='gray' /></div>
+                            <div className="inWrap">
+                                <div className="viewTxt">보기</div>
+                                <div className="viewDrop"><GrFormDown size={"12px"} color='gray' /></div>
+                            </div>
                         </div>
                     </div>
                 </div>
