@@ -39,8 +39,6 @@ function Taskbar({ changeSearch, changeStart, isSearch, isStart }) {
     useEffect(() => {
         setIsSearchOn(isSearch)
         setIsStartOn(isStart)
-        console.log('search', isSearch)
-        console.log('start', isStart)
     }, [isSearch, isStart]);
 
     useEffect(() => {

@@ -1,16 +1,18 @@
 .folder {
-    width: 58vw;
-    height: 60vh;
+    width: 1150px;
+    height: 550px;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
     background-color: #ffffff;
+    border: solid 1px #989a9b;
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
 }
 
 .folder .folderHeader {
-    background-color: #CFDCEC;
+    background-color: #D1DBEC;
     height: 38px;
     border-radius: 10px 10px 0 0;
     display: flex;
@@ -141,7 +143,7 @@
     display: flex;
     align-items: center;
     height: 100%;
-    flex: .27;
+    flex: .17;
     gap: 6px;
     margin-left: 3px;
     justify-content: space-evenly;
@@ -155,6 +157,7 @@
     height: 34px;
     border-radius: 6px;
     font-size: 16px;
+    transition: .15s;
 }
 
 .folder .midHeader .moveWrap div:hover {
@@ -163,7 +166,7 @@
 
 .folder .midHeader .directory {
     display: flex;
-    flex: .68;
+    flex: .6;
     height: 33px;
     border-radius: 5px;
     align-items: center;
@@ -174,17 +177,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 21px;
-    height: 21px;
+    width: 25px;
+    height: 25px;
 }
 
 .folder .midHeader .directory .txt {
-    width: 28px;
+    width: 30px;
 }
 
 .folder .midHeader .directory .icon {
-    padding: 8px;
+    padding: 7px 5px;
     color: #666666;
+}
+
+.folder .midHeader .directory .arrow:hover,
+.folder .midHeader .directory .txt:hover {
+    background-color: #F2F3F4;
 }
 
 .folder .midHeader .directory #btn {
@@ -193,8 +201,7 @@
 }
 
 .folder .midHeader .search {
-    flex: .37;
-    background-color: #FCFCFD;
+    flex: .23;
     height: 33px;
     border-radius: 5px;
     margin-right: 10px;
@@ -204,25 +211,39 @@
     position: relative;
 }
 
+.folder .search input:hover {
+    background-color: #F5F7F9;
+    border: solid 1px #E3E6EB;
+}
+
 .folder .search input {
-    border: none;
+    border: solid 1px #ffffff00;
     border-radius: 5px;
-    height: 30px;
+    height: 33px;
     outline: none;
-    margin-left: 10px;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.folder .search input:focus {
+    border-bottom: solid 2px #0058BA;
+}
+
+.folder .search input::placeholder {
+    padding: 5px;
 }
 
 .folder .midHeader .search .searchIcon {
     position: absolute;
-    top: 3px;
+    top: 6px;
     right: 10px;
 }
 
 .folder .botHeader {
     display: flex;
     background-color: #ffffff;
-    box-shadow: 0 -0.5px 0 .4px rgb(192, 204, 217),
-        0 0.5px 0 .4px rgb(192, 204, 217);
+    border-top: solid 0.1mm rgba(192, 204, 217, 0.8);
+    border-bottom: solid 0.1mm rgba(192, 204, 217, 0.8);
     align-items: center;
     height: 53px;
 }
@@ -231,22 +252,98 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3px;
-    flex: .15;
+    flex: .12;
     height: 50px;
 }
 
-.folder .botHeader .newWrap div {
+.folder .botHeader .newWrap .newHover div {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 12px;
+}
+
+.folder .botHeader .newWrap .newHover {
+    display: flex;
+    padding: 10px;
+    border-radius: 5px;
+    gap: 5px;
+    transition: .15s;
+}
+
+.folder .botHeader .newWrap .newHover:hover {
+    background-color: #F6F6F6;
 }
 
 .folder .botHeader .toolWrap {
     display: flex;
     height: 30px;
-    flex: .3;
+    flex: .25;
     justify-content: space-around;
     align-items: center;
     border-left: solid 1px rgba(128, 128, 128, 0.2);
+}
+
+.folder .botHeader .toolWrap div {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    transition: .15s;
+}
+
+.folder .botHeader .toolWrap div:hover {
+    background-color: #F6F6F6;
+}
+
+.folder .botHeader .visionWrap {
+    display: flex;
+    flex: .17;
+    border-left: solid 1px rgba(128, 128, 128, 0.2);
+    border-right: solid 1px rgba(128, 128, 128, 0.2);
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 11px;
+}
+
+.folder .botHeader .visionWrap div {
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.folder .botHeader .visionWrap #visionWrap {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    gap: 7px;
+    height: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: .15s;
+}
+
+.folder .botHeader .visionWrap div div:hover {
+    background-color: #F6F6F6;
+}
+
+.folder .botHeader .more {
+    flex: .045;
+}
+
+.folder .botHeader .more .moreWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 5px;
+    font-size: 18px;
+}
+
+.folder .botHeader .more .moreWrap:hover {
+    background-color: #F6F6F6;
 }

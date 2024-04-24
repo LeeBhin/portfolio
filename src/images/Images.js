@@ -32,6 +32,14 @@ import USERFOLDER from '../images/userfolder.png'
 import PICTURESFOLDER from '../images/picturesfolder.png'
 import DESKTOP from '../images/desktop.png'
 import HOME from '../images/home.png'
+import SCISSORS from '../images/scissors.png'
+import COPY from '../images/copy.png'
+import PASTE from '../images/paste.png'
+import RENAME from '../images/rename.png'
+import SHARE from '../images/share.png'
+import DELETE from '../images/delete.png'
+import SORT from '../images/sort.png'
+import VIEWBIG from '../images/viewBig.png'
 
 const Images = {
     HTML,
@@ -68,6 +76,15 @@ const Images = {
     PICTURESFOLDER,
     DESKTOP,
     HOME,
+    HOME,
+    SCISSORS,
+    COPY,
+    PASTE,
+    RENAME,
+    SHARE,
+    DELETE,
+    SORT,
+    VIEWBIG,
 };
 
 export { Images };
