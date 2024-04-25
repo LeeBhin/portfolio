@@ -50,6 +50,7 @@ import VIDEO from '../images/video.png'
 import DRIVE from '../images/drive.png'
 import MYPC from '../images/mypc.png'
 import NETWORK from '../images/network.png'
+import DETAIL from '../images/detail.png'
 
 const Images = {
     HTML,
@@ -104,6 +105,7 @@ const Images = {
     DRIVE,
     MYPC,
     NETWORK,
+    DETAIL,
 };
 
 export { Images };

@@ -111,6 +111,11 @@ function Folder({ }) {
                         <FiMoreHorizontal />
                     </div>
                 </div>
+
+                <div className="detailInfo">
+                    <div className="icon"><img src={Images.DETAIL} alt="" /></div>
+                    <div className="txt">세부 정보</div>
+                </div>
             </div>
 
             <div className="leftHeader">

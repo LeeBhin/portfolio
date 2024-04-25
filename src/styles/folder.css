@@ -374,6 +374,27 @@
     opacity: .7;
 }
 
+.folder .botHeader .detailInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+}
+
+.folder .botHeader .detailInfo .icon {
+    width: 16px;
+    height: 12px;
+}
+
+.folder .botHeader .detailInfo:hover {
+    background-color: #F6F6F6;
+}
+
 .folder .leftHeader {
     width: 180px;
     height: 75%;
