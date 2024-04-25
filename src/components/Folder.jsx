@@ -13,6 +13,9 @@ import { GrFormDown } from "react-icons/gr";
 import { FiMoreHorizontal } from "react-icons/fi";
 
 function Folder({ }) {
+    const homeIcons = { '홈': 'HOME', '갤러리': 'GALLERY', '자격증': 'CERTIFICATE' };
+    const pinnedIcons = { '바탕 화면': 'DESKTOP', '다운로드': 'DOWNLOAD', '문서': 'DOCUMENT', '사진': 'PICTURE', '음악': 'MUSIC', '동영상': 'VIDEO' };
+    const driveIcons = { 'BenDrive': 'DRIVE', '내 PC': 'MYPC', '네트워크': 'NETWORK' };
     return (
         <div className="folder">
             <div className="folderHeader">
@@ -110,11 +113,37 @@ function Folder({ }) {
                 </div>
             </div>
 
-
-
             <div className="leftHeader">
+                <div className="homeWrap leftWrap">
+                    {Object.entries(homeIcons).map(([txt, icon]) => (
+                        <div key={icon} className='iconWrap'>
+                            <div className="icon"><img src={Images[icon]} alt={txt} /></div>
+                            <div className="txt">{txt}</div>
+                        </div>
+                    ))}
+                </div>
 
+                <div className="leftWrapLine"></div>
 
+                <div className="pinnedWrap leftWrap">
+                    {Object.entries(pinnedIcons).map(([txt, icon]) => (
+                        <div key={icon} className='iconWrap'>
+                            <div className="icon"><img src={Images[icon]} alt={txt} /></div>
+                            <div className="txt">{txt}</div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="leftWrapLine"></div>
+
+                <div className="driveWrap leftWrap">
+                    {Object.entries(driveIcons).map(([txt, icon]) => (
+                        <div key={icon} className='iconWrap'>
+                            <div className="icon"><img src={Images[icon]} alt={txt} /></div>
+                            <div className="txt">{txt}</div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div >
     );

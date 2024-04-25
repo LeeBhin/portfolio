@@ -40,6 +40,16 @@ import SHARE from '../images/share.png'
 import DELETE from '../images/delete.png'
 import SORT from '../images/sort.png'
 import VIEWBIG from '../images/viewBig.png'
+import GALLERY from '../images/gallery.png'
+import CERTIFICATE from '../images/certificate.png'
+import DOWNLOAD from '../images/download.png'
+import DOCUMENT from '../images/document.png'
+import PICTURE from '../images/picture.png'
+import MUSIC from '../images/music.png'
+import VIDEO from '../images/video.png'
+import DRIVE from '../images/drive.png'
+import MYPC from '../images/mypc.png'
+import NETWORK from '../images/network.png'
 
 const Images = {
     HTML,
@@ -76,7 +86,6 @@ const Images = {
     PICTURESFOLDER,
     DESKTOP,
     HOME,
-    HOME,
     SCISSORS,
     COPY,
     PASTE,
@@ -85,6 +94,16 @@ const Images = {
     DELETE,
     SORT,
     VIEWBIG,
+    GALLERY,
+    CERTIFICATE,
+    DOWNLOAD,
+    DOCUMENT,
+    PICTURE,
+    MUSIC,
+    VIDEO,
+    DRIVE,
+    MYPC,
+    NETWORK,
 };
 
 export { Images };
