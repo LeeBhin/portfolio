@@ -31,7 +31,7 @@
 .folder .folderHeader .tabWrap {
     height: 38px;
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     width: 282px;
     position: relative;
     margin-left: 2px;
@@ -101,7 +101,7 @@
 
 .folder .minMaxWrap {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     height: 100%;
 }
 
