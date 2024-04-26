@@ -12,7 +12,7 @@ import { PiPlusCircleThin } from "react-icons/pi";
 import { GrFormDown } from "react-icons/gr";
 import { FiMoreHorizontal } from "react-icons/fi";
 
-function Folder({ }) {
+function Folder() {
     const homeIcons = { '홈': 'HOME', '갤러리': 'GALLERY', '자격증': 'CERTIFICATE' };
     const pinnedIcons = { '바탕 화면': 'DESKTOP', '다운로드': 'DOWNLOAD', '문서': 'DOCUMENT', '사진': 'PICTURE', '음악': 'MUSIC', '동영상': 'VIDEO' };
     const driveIcons = { 'BenDrive': 'DRIVE', '내 PC': 'MYPC', '네트워크': 'NETWORK' };
