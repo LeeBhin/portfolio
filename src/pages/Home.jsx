@@ -67,6 +67,7 @@ function Home() {
     useEffect(() => {
         togglePopupMove('.searchPopup', isSearchOn, 'searchUp', 'searchDown')
         togglePopupMove('.startPopupWrap', isStartOn, 'startUp', 'startDown')
+         // eslint-disable-next-line
     }, [isSearchOn, isStartOn]);
 
     const changeSearch = (isSearchOn) => {
