@@ -1,9 +1,7 @@
 import '../styles/folder.css'
 import { Images } from '../images/Images';
-import { CgClose } from "react-icons/cg";
-import { PiPlus, PiArrowLeftLight, PiArrowRightLight, PiArrowUpLight, PiMinus } from "react-icons/pi";
+import { PiPlus, PiMinus } from "react-icons/pi";
 import { GoHome } from "react-icons/go";
-import { RxReload } from "react-icons/rx";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { IoIosSearch } from "react-icons/io";
 import { GrClose } from "react-icons/gr";
@@ -27,12 +25,12 @@ function Folder() {
                             </svg>
                             <div className="iconWrap">
                                 <div className="tabIcon">
-                                    <img src={Images.HOME} alt="" />
+                                    <img src={Images.HOME} alt="home" />
                                 </div>
                                 <div className="iconTxt">홈</div>
                             </div>
 
-                            <div className="tabClose"><CgClose /></div>
+                            <div className="tabClose"><img src={Images.FOLDERTABX} alt="tabClose" /></div>
                         </div>
                         <div className="tabPlus"><PiPlus /></div>
                     </div>
@@ -46,10 +44,10 @@ function Folder() {
             </div>
             <div className="midHeader">
                 <div className="moveWrap">
-                    <div className="prev"><PiArrowLeftLight /></div>
-                    <div className="next">< PiArrowRightLight /></div>
-                    <div className="up"><PiArrowUpLight /></div>
-                    <div className="reload"><RxReload size={"14px"} /></div>
+                    <div className="prev"><img src={Images.LEFTARROW} alt="" /></div>
+                    <div className="next"><img src={Images.LEFTARROW} style={{ transform: "rotate(180deg)" }} alt="" /></div>
+                    <div className="up"><img src={Images.UPARROW} alt="" /></div>
+                    <div className="reload"><img src={Images.RELOAD} alt="" /></div>
                 </div>
 
                 <div className="directory">
@@ -69,7 +67,7 @@ function Folder() {
             <div className="botHeader">
                 <div className="newWrap">
                     <div className="newHover">
-                        <div className="newBtn"><PiPlusCircleThin size={"20px"} /></div>
+                        <div className="newBtn"><img src={Images.NEWMAKE} alt="" /></div>
                         <div className="newTxt">새로 만들기</div>
                         <div className="newDrop"><GrFormDown size={"12px"} color='gray' /></div>
                     </div>
@@ -118,36 +116,46 @@ function Folder() {
                 </div>
             </div>
 
-            <div className="leftHeader">
-                <div className="homeWrap leftWrap">
-                    {Object.entries(homeIcons).map(([txt, icon]) => (
-                        <div key={icon} className='iconWrap'>
-                            <div className="icon"><img src={Images[icon]} alt={txt} /></div>
-                            <div className="txt">{txt}</div>
-                        </div>
-                    ))}
+            <div className="folderBody">
+
+                <div className="leftHeader">
+                    <div className="homeWrap leftWrap">
+                        {Object.entries(homeIcons).map(([txt, icon]) => (
+                            <div key={icon} className='iconWrap'>
+                                <div className="icon"><img src={Images[icon]} alt={txt} /></div>
+                                <div className="txt">{txt}</div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="leftWrapLine"></div>
+
+                    <div className="pinnedWrap leftWrap">
+                        {Object.entries(pinnedIcons).map(([txt, icon]) => (
+                            <div key={icon} className='iconWrap'>
+                                <div className="icon"><img src={Images[icon]} alt={txt} /></div>
+                                <div className="txt">{txt}</div>
+
+                                <div className="pinIcon">
+                                    <img src={Images.PIN} alt="" />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="leftWrapLine"></div>
+
+                    <div className="driveWrap leftWrap">
+                        {Object.entries(driveIcons).map(([txt, icon]) => (
+                            <div key={icon} className='iconWrap'>
+                                <div className="icon"><img src={Images[icon]} alt={txt} /></div>
+                                <div className="txt">{txt}</div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
-                <div className="leftWrapLine"></div>
-
-                <div className="pinnedWrap leftWrap">
-                    {Object.entries(pinnedIcons).map(([txt, icon]) => (
-                        <div key={icon} className='iconWrap'>
-                            <div className="icon"><img src={Images[icon]} alt={txt} /></div>
-                            <div className="txt">{txt}</div>
-                        </div>
-                    ))}
-                </div>
-
-                <div className="leftWrapLine"></div>
-
-                <div className="driveWrap leftWrap">
-                    {Object.entries(driveIcons).map(([txt, icon]) => (
-                        <div key={icon} className='iconWrap'>
-                            <div className="icon"><img src={Images[icon]} alt={txt} /></div>
-                            <div className="txt">{txt}</div>
-                        </div>
-                    ))}
+                <div className="folderInner">
                 </div>
             </div>
         </div >

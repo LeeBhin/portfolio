@@ -51,6 +51,13 @@ import DRIVE from '../images/drive.png'
 import MYPC from '../images/mypc.png'
 import NETWORK from '../images/network.png'
 import DETAIL from '../images/detail.png'
+import PIN from '../images/pin.png'
+import BELL from '../images/bell.png'
+import FOLDERTABX from '../images/foldertabx.png'
+import LEFTARROW from '../images/leftarrow.png'
+import UPARROW from '../images/uparrow.png'
+import RELOAD from '../images/reload.png'
+import NEWMAKE from '../images/newmake.png'
 
 const Images = {
     HTML,
@@ -106,6 +113,13 @@ const Images = {
     MYPC,
     NETWORK,
     DETAIL,
+    PIN,
+    BELL,
+    FOLDERTABX,
+    LEFTARROW,
+    UPARROW,
+    RELOAD,
+    NEWMAKE,
 };
 
 export { Images };

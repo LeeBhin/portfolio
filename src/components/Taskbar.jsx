@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import '../styles/taskbar.css'
 import { HiOutlineSearch } from "react-icons/hi";
 import { GoBell } from "react-icons/go";
+import { Images } from '../images/Images';
 
 function Taskbar({ changeSearch, changeStart, isSearch, isStart }) {
     const [isSearchOn, setIsSearchOn] = useState(false)
@@ -97,7 +98,7 @@ function Taskbar({ changeSearch, changeStart, isSearch, isStart }) {
                     <div className="time">{formatTime(time)}</div>
                     <div className="date">{formatDate(time)}</div>
                 </div>
-                <div className="alarm"><GoBell /></div>
+                <div className="alarm"><img src={Images.BELL} alt="" /></div>
             </div>
         </div>
     );

@@ -55,7 +55,7 @@ function SearchPopupInner() {
                             </div>
 
                             <div className="aboutTxt">
-                                내 정보
+                                Profile
                             </div>
                         </div>
                         <div className="aboutWrap">
@@ -64,7 +64,7 @@ function SearchPopupInner() {
                             </div>
 
                             <div className="aboutTxt">
-                                깃허브
+                                Github
                             </div>
                         </div>
                         <div className="aboutWrap">
@@ -73,7 +73,7 @@ function SearchPopupInner() {
                             </div>
 
                             <div className="aboutTxt">
-                                블로그
+                                Contact
                             </div>
                         </div>
                     </div>

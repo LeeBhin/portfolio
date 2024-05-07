@@ -119,9 +119,6 @@
     background-color: #C9D2E3;
 }
 
-.folder .minMaxWrap .minBtn,
-.folder .minMaxWrap .maxBtn {}
-
 .folder .minMaxWrap .closeBtn {
     border-radius: 0 10px 0 0;
 }
@@ -379,7 +376,7 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
-    padding: 8px 10px;
+    padding: 10px;
     border-radius: 5px;
     font-size: 12px;
     position: absolute;
@@ -395,8 +392,12 @@
     background-color: #F6F6F6;
 }
 
+.folder .botHeader .detailInfo:active {
+    opacity: .7;
+}
+
 .folder .leftHeader {
-    width: 180px;
+    width: 175px;
     height: 75%;
     border-right: solid .1mm rgba(128, 128, 128, 0.08);
     display: flex;
@@ -406,6 +407,13 @@
 .folder .leftHeader .leftWrap {
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.folder .leftHeader .iconWrap .pinIcon {
+    position: absolute;
+    right: 0;
+    padding-right: 8px;
 }
 
 .folder .leftHeader .homeWrap {
@@ -468,4 +476,14 @@
 .folder .folderFooter .footerTxt {
     font-size: 12px;
     margin-left: 15px;
+}
+
+.folder .folderBody {
+    display: flex;
+}
+
+.folder .folderInner {
+    background-color: aqua;
+    width: 85%;
+    overflow-y: scroll;
 }
