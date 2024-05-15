@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import '../styles/taskbar.css'
 import { HiOutlineSearch } from "react-icons/hi";
-import { GoBell } from "react-icons/go";
 import { Images } from '../images/Images';
 
 function Taskbar({ changeSearch, changeStart, isSearch, isStart }) {

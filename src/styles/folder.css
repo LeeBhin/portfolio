@@ -1,14 +1,16 @@
 .folder {
-    width: 1100px;
-    height: 650px;
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    left: 20%;
+    top: -800px;
     border-radius: 10px;
     background-color: #ffffff;
     border: solid 1px #989a9b;
     box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.folderWrap {
+    height: 100%;
 }
 
 .folder .folderHeader {
@@ -131,7 +133,7 @@
 .folder .midHeader {
     background-color: #F0F5F9;
     width: 100%;
-    height: 50px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -142,7 +144,7 @@
     display: flex;
     align-items: center;
     height: 100%;
-    flex: .17;
+    width: 200px;
     gap: 6px;
     margin-left: 3px;
     justify-content: space-evenly;
@@ -169,7 +171,7 @@
 
 .folder .midHeader .directory {
     display: flex;
-    flex: .6;
+    flex: 1;
     height: 33px;
     border-radius: 5px;
     align-items: center;
@@ -204,7 +206,7 @@
 }
 
 .folder .midHeader .search {
-    flex: .23;
+    width: 250px;
     height: 33px;
     border-radius: 5px;
     margin-right: 10px;
@@ -255,7 +257,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: .125;
+    width: 140px;
     height: 50px;
 }
 
@@ -285,7 +287,7 @@
 .folder .botHeader .toolWrap {
     display: flex;
     height: 30px;
-    flex: .27;
+    width: 290px;
     justify-content: space-around;
     align-items: center;
     border-left: solid 1px rgba(128, 128, 128, 0.2);
@@ -311,7 +313,7 @@
 
 .folder .botHeader .visionWrap {
     display: flex;
-    flex: .163;
+    width: 180px;
     border-left: solid 1px rgba(128, 128, 128, 0.2);
     border-right: solid 1px rgba(128, 128, 128, 0.2);
     justify-content: space-evenly;
@@ -398,10 +400,11 @@
 
 .folder .leftHeader {
     width: 175px;
-    height: 75%;
+    height: 94%;
     border-right: solid .1mm rgba(128, 128, 128, 0.08);
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
 }
 
 .folder .leftHeader .leftWrap {
@@ -435,8 +438,7 @@
     margin: 0 3px;
 }
 
-.folder .leftHeader .iconWrap .icon:hover,
-.folder .leftHeader .iconWrap .txt:hover {
+.folder .leftHeader .iconWrap:hover {
     cursor: pointer;
 }
 
@@ -457,8 +459,8 @@
 }
 
 .folder .leftHeader .leftWrap .icon {
-    height: 17px;
-    width: 17px;
+    height: 15px;
+    width: 15px;
     position: relative;
     display: flex;
 }
@@ -480,10 +482,11 @@
 
 .folder .folderBody {
     display: flex;
+    height: calc(100% - 131px);
 }
 
 .folder .folderInner {
     background-color: aqua;
-    width: 85%;
-    overflow-y: scroll;
+    width:calc(100% - 180px);
+    overflow-y: auto;
 }
