@@ -293,3 +293,7 @@
     transform: translateY(10%);
     transition: .2s cubic-bezier(0.88, 0, 0.88, 1);
 }
+
+.startPopup .skills::-webkit-scrollbar{
+    display: none;
+}
