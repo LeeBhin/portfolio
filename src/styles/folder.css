@@ -1,5 +1,5 @@
 .folder {
-    position: absolute;
+    position: absolute !important;
     left: 20%;
     top: -800px;
     border-radius: 10px;
