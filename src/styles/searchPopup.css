@@ -293,7 +293,7 @@
 }
 
 .searchPopup.searchUp {
-    transform: translateY(-199%);
+    transform: translateY(-108%);
     transition: .2s ease;
 }
 

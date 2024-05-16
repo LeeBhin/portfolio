@@ -1,7 +1,7 @@
 .folder {
-    position: absolute;
-    left: 20%;
-    top: -800px;
+    position: absolute !important;
+    left: 30%;
+    top: 30%;
     border-radius: 10px;
     background-color: #ffffff;
     border: solid 1px #989a9b;
