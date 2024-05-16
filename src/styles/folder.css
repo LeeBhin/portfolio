@@ -9,11 +9,6 @@
     overflow: hidden;
 }
 
-.folder.react-draggable.react-draggable-dragged{
-    position:absolute;
-    transform:translate(-180px, 1000px)
-}
-
 .folderWrap {
     height: 100%;
 }
