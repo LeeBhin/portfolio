@@ -285,11 +285,11 @@
 
 
 .startPopupWrap.startUp {
-    transform: translateY(-208.5%);
+    transform: translateY(-299%);
     transition: .2s ease;
 }
 
 .startPopupWrap.startDown {
-    transform: translateY(-100%);
+    transform: translateY(10%);
     transition: .2s cubic-bezier(0.88, 0, 0.88, 1);
 }

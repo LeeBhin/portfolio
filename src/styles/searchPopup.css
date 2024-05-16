@@ -293,11 +293,11 @@
 }
 
 .searchPopup.searchUp {
-    transform: translateY(-108.5%);
+    transform: translateY(-199%);
     transition: .2s ease;
 }
 
 .searchPopup.searchDown {
-    transform: translateY(0%);
+    transform: translateY(10%);
     transition: .2s cubic-bezier(0.88, 0, 0.88, 1);
 }
