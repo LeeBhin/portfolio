@@ -2,6 +2,11 @@ import { HiOutlineSearch, HiLocationMarker } from "react-icons/hi";
 import { RiShareBoxLine } from "react-icons/ri";
 
 function SearchPopupInner() {
+    const URL = ['https://highschfinder.netlify.app/','https://sebuungcm.netlify.app','https://scented-subdued-rose.glitch.me','https://leebhin.netlify.app']
+
+    const OpenURL = (num) => {
+        window.open(URL[num], '_blank');
+      };
     return (
         <>
             <div className="search">
@@ -19,22 +24,22 @@ function SearchPopupInner() {
                     </span>
 
                     <div className="shortList">
-                        <div className="listWrap">
+                        <div className="listWrap" onClick={() => OpenURL(0)}>
                             <div className="listIcon"></div>
                             <div className="listName">ChatHSF</div>
                             <RiShareBoxLine />
                         </div>
-                        <div className="listWrap">
+                        <div className="listWrap" onClick={() => OpenURL(1)}>
                             <div className="listIcon"></div>
                             <div className="listName">Sebbung 커뮤니티</div>
                             <RiShareBoxLine />
                         </div>
-                        <div className="listWrap">
+                        <div className="listWrap" onClick={() => OpenURL(2)}>
                             <div className="listIcon"></div>
                             <div className="listName">None-DB-Login</div>
                             <RiShareBoxLine />
                         </div>
-                        <div className="listWrap">
+                        <div className="listWrap" onClick={() => OpenURL(3)}>
                             <div className="listIcon"></div>
                             <div className="listName">Windows 11</div>
                             <RiShareBoxLine />

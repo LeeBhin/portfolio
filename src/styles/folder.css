@@ -1,7 +1,5 @@
 .folder {
     position: absolute !important;
-    left: 30%;
-    top: 30%;
     border-radius: 10px;
     background-color: #ffffff;
     border: solid 1px #989a9b;
@@ -198,6 +196,11 @@
 .folder .midHeader .directory .arrow:hover,
 .folder .midHeader .directory .txt:hover {
     background-color: #F2F3F4;
+}
+
+.folder .midHeader .directory .arrow:active,
+.folder .midHeader .directory .txt:active {
+    opacity: .7;
 }
 
 .folder .midHeader .directory #btn {
@@ -489,4 +492,9 @@
     background-color: aqua;
     width:calc(100% - 180px);
     overflow-y: auto;
+}
+
+.folderC{
+    width: 50% !important;
+    height: 50% !important;
 }

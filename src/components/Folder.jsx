@@ -12,12 +12,20 @@ import { useState } from 'react';
 import { Rnd } from 'react-rnd';
 
 function Folder() {
-    const [size, setSize] = useState({ width: 1100, height: 650 });
-    const [position, setPosition] = useState({ x: 50, y: 50 });
+    const [size, setSize] = useState({ width: 1000, height: 600 });
+    const [position, setPosition] = useState({ x: 430, y: 130 });
 
     const homeIcons = { '홈': 'HOME', '갤러리': 'GALLERY', '자격증': 'CERTIFICATE' };
     const pinnedIcons = { '바탕 화면': 'DESKTOP', '다운로드': 'DOWNLOAD', '문서': 'DOCUMENT', '사진': 'PICTURE', '음악': 'MUSIC', '동영상': 'VIDEO' };
     const driveIcons = { 'BenDrive': 'DRIVE', '내 PC': 'MYPC', '네트워크': 'NETWORK' };
+
+    const CloseFolder = (event) => {
+        const selectedFolder = event.currentTarget.closest('.folder');
+
+        selectedFolder.style.transition = "transform 0.2s cubic-bezier(0.88, 0, 0.88, 1), opacity 0.15s cubic-bezier(0.88, 0, 0.88, 1)";
+        selectedFolder.style.transform += " scale(0.8)";
+        selectedFolder.style.opacity = "0";
+    }
 
     return (
         <Rnd className='folder'
@@ -34,7 +42,6 @@ function Folder() {
                 });
                 setPosition(position);
             }}
-            bounds="parent"
             minWidth={760}
             minHeight={250}
             resizeHandleStyles={{
@@ -42,7 +49,7 @@ function Folder() {
                 right: { cursor: 'e-resize' },
                 bottom: { cursor: 's-resize' },
                 left: { cursor: 'w-resize' },
-              }}
+            }}
         >
             <div className="folderWrap">
                 <div className="folderHeader">
@@ -68,7 +75,7 @@ function Folder() {
                     <div className="minMaxWrap">
                         <div className="minBtn"><PiMinus size={"14px"} /></div>
                         <div className="maxBtn"><TbSquare size={"12px"} /></div>
-                        <div className="closeBtn"><GrClose size={"12px"} /></div>
+                        <div className="closeBtn" onClick={CloseFolder}><GrClose size={"12px"} /></div>
                     </div>
                 </div>
                 <div className="midHeader">
