@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import '../styles/taskbar.css'
 import { HiOutlineSearch } from "react-icons/hi";
 import { Images } from '../images/Images';
 
-function Taskbar({ changeSearch, changeStart, isSearch, isStart, folderClick }) {
+function Taskbar({ changeSearch, changeStart, isSearch, isStart, folderClick, isFolderOn }) {
     const [isSearchOn, setIsSearchOn] = useState(false)
     const [isStartOn, setIsStartOn] = useState(false)
     const [time, setTime] = useState(new Date());
@@ -39,6 +39,7 @@ function Taskbar({ changeSearch, changeStart, isSearch, isStart, folderClick }) 
     useEffect(() => {
         setIsSearchOn(isSearch)
         setIsStartOn(isStart)
+        console.log(isFolderOn)
     }, [isSearch, isStart]);
 
     useEffect(() => {
@@ -57,6 +58,7 @@ function Taskbar({ changeSearch, changeStart, isSearch, isStart, folderClick }) 
         setIsSearchOn(prevState => !prevState);
         changeSearch(!isSearchOn);
     }
+
     const handleStart = () => {
         setIsStartOn(prevState => !prevState);
         changeStart(!isStartOn);
@@ -90,7 +92,7 @@ function Taskbar({ changeSearch, changeStart, isSearch, isStart, folderClick }) 
 
             <div className="fileExpBtn" onClick={handleFolder}>
                 <div className="fileExpWrap">
-                    <div id="hoverDiv"></div>
+                    <div id="hoverDiv" style={{ opacity: isFolderOn ? "1" : "" }}></div>
                     <div className="fileExImg"></div>
                 </div>
             </div>

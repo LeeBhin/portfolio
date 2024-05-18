@@ -13,8 +13,13 @@ function Home() {
     const [isSearchOn, setIsSearchOn] = useState(false);
     const [isStartOn, setIsStartOn] = useState(false);
     const [activeIcon, setActiveIcon] = useState(null);
+    const [folder, setFolder] = useState([]);
+    const [isFolderOn, setIsFolderOn] = useState(false)
+
     const desktopRef = useRef(null);
+
     const [folders, setFolders] = useState({
+        FolderHome: false,
         Leebhin: false,
         Certificate: false,
         Portfolio: false,
@@ -73,45 +78,60 @@ function Home() {
     };
 
     useEffect(() => {
-        togglePopupMove('.searchPopup', isSearchOn, 'searchUp', 'searchDown')
-        togglePopupMove('.startPopupWrap', isStartOn, 'startUp', 'startDown')
+        togglePopupMove('.searchPopup', isSearchOn, 'searchUp', 'searchDown');
+        togglePopupMove('.startPopupWrap', isStartOn, 'startUp', 'startDown');
         // eslint-disable-next-line
     }, [isSearchOn, isStartOn]);
 
     const changeSearch = (isSearchOn) => {
-        if (isStartOn) setIsStartOn(false)
-        setIsSearchOn(isSearchOn)
-        togglePopupMove('.searchPopup', isSearchOn, 'searchUp', 'searchDown')
+        if (isStartOn) setIsStartOn(false);
+        setIsSearchOn(isSearchOn);
+        togglePopupMove('.searchPopup', isSearchOn, 'searchUp', 'searchDown');
     }
 
     const changeStart = (isStartOn) => {
-        if (isSearchOn) setIsSearchOn(false)
-        setIsStartOn(isStartOn)
-        togglePopupMove('.startPopupWrap', isStartOn, 'startUp', 'startDown')
+        if (isSearchOn) setIsSearchOn(false);
+        setIsStartOn(isStartOn);
+        togglePopupMove('.startPopupWrap', isStartOn, 'startUp', 'startDown');
     }
 
     const togglePopupMove = (element, isOn, classUp, classDown) => {
-        const popupElement = document.querySelector(element)
+        const popupElement = document.querySelector(element);
         if (isOn) {
-            popupElement.style.transition = '.2s ease'
-            popupElement.classList.remove(classDown)
-            popupElement.classList.add(classUp)
+            popupElement.style.transition = '.23s ease';
+            popupElement.classList.remove(classDown);
+            popupElement.classList.add(classUp);
         } else {
             if (!isSearchOn && !isStartOn) {
-                popupElement.style.transition = '.2s cubic-bezier(0.88, 0, 0.88, 1)'
+                popupElement.style.transition = '.23s cubic-bezier(0.88, 0, 0.88, 1)';
             } else {
-                popupElement.style.transition = '0s'
+                popupElement.style.transition = '0s';
             }
-            popupElement.classList.remove(classUp)
-            popupElement.classList.add(classDown)
+            popupElement.classList.remove(classUp);
+            popupElement.classList.add(classDown);
         }
     }
 
+    const FoldersChk = () => {
+        if (Object.values(folders).filter(value => value === true).length === 1) {
+            setIsFolderOn(true);
+        } else {
+            setIsFolderOn(false);
+        }
+    }
 
+    const folderState = (target, state) => {
+        folders[target] = state;
+        FoldersChk();
+    }
+
+    const addFolder = (inner) => {
+        setFolder([...folder, { inner }]);
+    };
 
     const folderClick = () => {
         if (Object.values(folders).every(value => value === false)) {
-
+            addFolder('FolderHome');
         }
     }
 
@@ -123,13 +143,23 @@ function Home() {
                 <DesktopIcon Icon={Images.FOLDER} Name={'포트폴리오'} onClick={() => handleIconClick('port')} isActive={activeIcon === 'port'} />
                 <DesktopIcon Icon={Images.PICTURESFOLDER} Name={'사진'} onClick={() => handleIconClick('img')} isActive={activeIcon === 'img'} />
             </div>
-            <Folder folderInner='FolderHome' />
+
+            {folder.map((folderItem, index) => (
+                <Folder
+                    folderInner={folderItem.inner}
+                    folderState={folderState}
+                    key={index}
+                    index={folderItem.class}
+                />
+            ))}
+
             <Taskbar
                 changeSearch={changeSearch}
                 changeStart={changeStart}
                 isSearch={isSearchOn}
                 isStart={isStartOn}
                 folderClick={folderClick}
+                isFolderOn={isFolderOn}
             />
             <SearchPopup />
             <StartPopup />

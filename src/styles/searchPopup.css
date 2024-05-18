@@ -294,10 +294,10 @@
 
 .searchPopup.searchUp {
     transform: translateY(-108%);
-    transition: .2s ease;
+    transition: .23s ease;
 }
 
 .searchPopup.searchDown {
     transform: translateY(10%);
-    transition: .2s cubic-bezier(0.88, 0, 0.88, 1);
+    transition: .23s cubic-bezier(0.88, 0, 0.88, 1);
 }

@@ -493,8 +493,3 @@
     width:calc(100% - 180px);
     overflow-y: auto;
 }
-
-.folderC{
-    width: 50% !important;
-    height: 50% !important;
-}

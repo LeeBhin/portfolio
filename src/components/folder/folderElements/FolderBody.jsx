@@ -20,7 +20,7 @@ function FolderBody({ folderInner }) {
         FolderHome
     };
 
-    const InnerComponent = components[folderInner] || (() => console.log('e'));
+    const InnerComponent = components[folderInner];
 
     return (
         <>
