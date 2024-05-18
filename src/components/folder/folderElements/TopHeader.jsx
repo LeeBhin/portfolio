@@ -4,7 +4,17 @@ import { PiPlus, PiMinus } from "react-icons/pi";
 import { GrClose } from "react-icons/gr";
 import { TbSquare } from "react-icons/tb";
 
-function TopHeader({ closeFolder }) {
+function TopHeader({ closeFolder, minFolder, setFolderTrigger }) {
+
+    const minHandle = () => {
+        setFolderTrigger('min')
+        minFolder();
+    }
+
+    const closeHandle = () => {
+        setFolderTrigger('close')
+        closeFolder();
+    }
 
     return (
         <>
@@ -29,9 +39,9 @@ function TopHeader({ closeFolder }) {
                 </div>
 
                 <div className="minMaxWrap">
-                    <div className="minBtn"><PiMinus size={"14px"} /></div>
+                    <div className="minBtn" onClick={minHandle}><PiMinus size={"14px"} /></div>
                     <div className="maxBtn"><TbSquare size={"12px"} /></div>
-                    <div className="closeBtn" onClick={closeFolder}><GrClose size={"12px"} /></div>
+                    <div className="closeBtn" onClick={closeHandle}><GrClose size={"12px"} /></div>
                 </div>
             </div>
         </>

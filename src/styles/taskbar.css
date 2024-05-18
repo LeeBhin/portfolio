@@ -12,7 +12,6 @@
     z-index: 100;
 }
 
-
 /* 시작메뉴 버튼 */
 
 .taskbar .startBtn:active .startBtnImg {
@@ -44,6 +43,10 @@
     opacity: 0;
 }
 
+.taskbar #hoverDiv:active {
+    opacity: 0.7;
+}
+
 .taskbar .startBtnImg {
     width: 25px;
     height: 25px;
@@ -55,7 +58,6 @@
 .taskbar .startBtn:active #hoverDiv {
     opacity: 0.7;
 }
-
 
 /* 검색버튼 */
 
