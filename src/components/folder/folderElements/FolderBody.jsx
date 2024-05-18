@@ -1,0 +1,74 @@
+import { Images } from "../../../images/Images";
+
+import FolderLeebhin from "../folderInners/FolderLeebhin";
+import FolderCertificate from "../folderInners/FolderCertificate";
+import FolderPicture from "../folderInners/FolderPicture";
+import FolderPortfolio from "../folderInners/FolderPortfolio";
+import FolderHome from "../folderInners/FolderHome";
+
+function FolderBody({ folderInner }) {
+
+    const homeIcons = { '홈': 'HOME', '갤러리': 'GALLERY', '자격증': 'CERTIFICATE' };
+    const pinnedIcons = { '바탕 화면': 'DESKTOP', '다운로드': 'DOWNLOAD', '문서': 'DOCUMENT', '사진': 'PICTURE', '음악': 'MUSIC', '동영상': 'VIDEO' };
+    const driveIcons = { 'BenDrive': 'DRIVE', '내 PC': 'MYPC', '네트워크': 'NETWORK' };
+
+    const components = {
+        FolderLeebhin,
+        FolderCertificate,
+        FolderPicture,
+        FolderPortfolio,
+        FolderHome
+    };
+
+    const InnerComponent = components[folderInner] || (() => console.log('e'));
+
+    return (
+        <>
+            <div className="folderBody">
+
+                <div className="leftHeader">
+                    <div className="homeWrap leftWrap">
+                        {Object.entries(homeIcons).map(([txt, icon]) => (
+                            <div key={icon} className='iconWrap'>
+                                <div className="icon"><img src={Images[icon]} alt={txt} /></div>
+                                <div className="txt">{txt}</div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="leftWrapLine"></div>
+
+                    <div className="pinnedWrap leftWrap">
+                        {Object.entries(pinnedIcons).map(([txt, icon]) => (
+                            <div key={icon} className='iconWrap'>
+                                <div className="icon"><img src={Images[icon]} alt={txt} /></div>
+                                <div className="txt">{txt}</div>
+
+                                <div className="pinIcon">
+                                    <img src={Images.PIN} alt="" />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="leftWrapLine"></div>
+
+                    <div className="driveWrap leftWrap">
+                        {Object.entries(driveIcons).map(([txt, icon]) => (
+                            <div key={icon} className='iconWrap'>
+                                <div className="icon"><img src={Images[icon]} alt={txt} /></div>
+                                <div className="txt">{txt}</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="folderInner">
+                    <InnerComponent />
+                </div>
+            </div>
+        </>
+    );
+}
+
+export default FolderBody;

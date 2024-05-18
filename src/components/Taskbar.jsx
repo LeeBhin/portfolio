@@ -3,7 +3,7 @@ import '../styles/taskbar.css'
 import { HiOutlineSearch } from "react-icons/hi";
 import { Images } from '../images/Images';
 
-function Taskbar({ changeSearch, changeStart, isSearch, isStart }) {
+function Taskbar({ changeSearch, changeStart, isSearch, isStart, folderClick }) {
     const [isSearchOn, setIsSearchOn] = useState(false)
     const [isStartOn, setIsStartOn] = useState(false)
     const [time, setTime] = useState(new Date());
@@ -62,6 +62,10 @@ function Taskbar({ changeSearch, changeStart, isSearch, isStart }) {
         changeStart(!isStartOn);
     }
 
+    const handleFolder = () => {
+        folderClick();
+    }
+
     return (
         <div className="taskbar">
 
@@ -84,7 +88,7 @@ function Taskbar({ changeSearch, changeStart, isSearch, isStart }) {
                 </div>
             </div>
 
-            <div className="fileExpBtn">
+            <div className="fileExpBtn" onClick={handleFolder}>
                 <div className="fileExpWrap">
                     <div id="hoverDiv"></div>
                     <div className="fileExImg"></div>

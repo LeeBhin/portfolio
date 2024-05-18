@@ -1,17 +1,25 @@
 import '../styles/home.css'
+
+import { Images } from '../images/Images';
+import { useEffect, useRef, useState } from 'react';
+
 import Taskbar from "../components/Taskbar";
 import SearchPopup from '../components/SearchPopup';
-import { useEffect, useRef, useState } from 'react';
 import StartPopup from '../components/StartPopup';
 import DesktopIcon from '../components/DesktopIcon';
 import Folder from '../components/Folder'
-import { Images } from '../images/Images';
 
 function Home() {
     const [isSearchOn, setIsSearchOn] = useState(false);
     const [isStartOn, setIsStartOn] = useState(false);
     const [activeIcon, setActiveIcon] = useState(null);
     const desktopRef = useRef(null);
+    const [folders, setFolders] = useState({
+        Leebhin: false,
+        Certificate: false,
+        Portfolio: false,
+        Picture: false
+    })
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -67,7 +75,7 @@ function Home() {
     useEffect(() => {
         togglePopupMove('.searchPopup', isSearchOn, 'searchUp', 'searchDown')
         togglePopupMove('.startPopupWrap', isStartOn, 'startUp', 'startDown')
-         // eslint-disable-next-line
+        // eslint-disable-next-line
     }, [isSearchOn, isStartOn]);
 
     const changeSearch = (isSearchOn) => {
@@ -99,6 +107,14 @@ function Home() {
         }
     }
 
+
+
+    const folderClick = () => {
+        if (Object.values(folders).every(value => value === false)) {
+
+        }
+    }
+
     return (
         <div className="home">
             <div className="background" ref={desktopRef}>
@@ -107,12 +123,13 @@ function Home() {
                 <DesktopIcon Icon={Images.FOLDER} Name={'포트폴리오'} onClick={() => handleIconClick('port')} isActive={activeIcon === 'port'} />
                 <DesktopIcon Icon={Images.PICTURESFOLDER} Name={'사진'} onClick={() => handleIconClick('img')} isActive={activeIcon === 'img'} />
             </div>
-            <Folder />
+            <Folder folderInner='FolderHome' />
             <Taskbar
                 changeSearch={changeSearch}
                 changeStart={changeStart}
                 isSearch={isSearchOn}
                 isStart={isStartOn}
+                folderClick={folderClick}
             />
             <SearchPopup />
             <StartPopup />
