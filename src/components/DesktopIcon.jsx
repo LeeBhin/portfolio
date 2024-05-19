@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import '../styles/desktopIcon.css';
 
-function DesktopIcon({ Icon, Name, onClick, isActive }) {
+function DesktopIcon({ Icon, Name, onClick, isActive, onDoubleClick }) {
     const [isActiveState, setIsActiveState] = useState(isActive);
 
     useEffect(() => {
@@ -13,7 +13,10 @@ function DesktopIcon({ Icon, Name, onClick, isActive }) {
     };
 
     return (
-        <div className={`desktopIcon ${isActiveState ? 'active' : ''}`} onClick={handleClick}>
+        <div className={`desktopIcon ${isActiveState ? 'active' : ''}`}
+            onClick={handleClick}
+            onDoubleClick={onDoubleClick}
+        >
             <div className="iconHover"></div>
             <div className="iconWrap">
                 <img src={Icon} alt={`${Name}Icon`} />

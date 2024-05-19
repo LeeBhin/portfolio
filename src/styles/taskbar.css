@@ -1,6 +1,6 @@
 .taskbar {
     width: 100vw;
-    height: 48px;
+    height: 45.5px;
     background: radial-gradient(circle, #D5DDF1, #E3EEF9);
     box-shadow: 0px -1px 0px .1px #B6BDC4;
     position: fixed;
@@ -31,11 +31,11 @@
     opacity: 1;
 }
 
-.taskbar #hoverDiv {
-    width: 38px;
-    height: 38px;
+.taskbar .startBtn #hoverDiv {
+    width: 36.5px;
+    height: 36.5px;
     background-color: #E8EEF9;
-    box-shadow: 0 0.5px .5px 0.5px #D1DAEE;
+    box-shadow: 0 0 .3px .7px #D1DAEE;
     border-radius: 4px;
     position: absolute;
     z-index: -1;
@@ -70,7 +70,7 @@
 
 .taskbar .searchBtnDiv {
     width: 100px;
-    height: 30px;
+    height: 29px;
     background: #F3F5FC;
     box-shadow: 0 0 .3px .5px #c8d2e7;
     border-radius: 100px;
@@ -127,15 +127,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    position: relative;
 }
 
 .taskbar .fileExpBtn:active .fileExImg {
-    transform: scale(.77);
+    transform: scale(.8);
 }
 
 .taskbar .fileExImg {
-    width: 25px;
-    height: 24px;
+    width: 24px;
+    height: 22px;
     background-image: url('../images/fileexplorer.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -143,10 +145,10 @@
 }
 
 .taskbar .fileExpWrap #hoverDiv {
-    width: 40px;
-    height: 38px;
+    width: 39px;
+    height: 37px;
     background-color: #E8EEF9;
-    box-shadow: 0 0.5px .5px 0.5px #D1DAEE;
+    box-shadow: 0 0 .3px .7px #D1DAEE;
     border-radius: 4px;
     position: absolute;
     z-index: -1;
@@ -163,6 +165,17 @@
     opacity: 0.7;
 }
 
+/* folder active bar */
+.taskbar .fileExpWrap .activeBar {
+    transition: .25s ease;
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    background-color: #0078D4;
+    border-radius: 100px;
+    width: 0;
+}
+
 
 /* 날짜 */
 
@@ -174,7 +187,7 @@
     align-items: center;
     justify-content: center;
     gap: 6px;
-    height: 39px;
+    height: 38px;
     width: 101px;
     border-radius: 4px;
 }
@@ -189,7 +202,7 @@
 
 .taskbar .dateAndAlarm:hover {
     background-color: rgba(249, 251, 254, 0.7);
-    box-shadow: 0 0.5px .5px 0.1px #D1DAEE;
+    box-shadow: 0 0 .3px .5px #d1daee8c;
 }
 
 .taskbar .dateAndAlarm:active {
@@ -208,4 +221,72 @@
 
 .taskbar .alarm {
     font-size: 17px;
+}
+
+@keyframes activeUp {
+    0% {
+        transform: translateY(0);
+    }
+
+    20% {
+        transform: translateY(-3px);
+    }
+
+    35% {
+        transform: translateY(-3px);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+
+    70% {
+        transform: translateY(0);
+    }
+
+    85% {
+        transform: translateY(1.5px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes activeDown {
+    0% {
+        transform: translateY(0);
+    }
+
+    20% {
+        transform: translateY(3px);
+    }
+
+    35% {
+        transform: translateY(3px);
+    }
+
+    50% {
+        transform: translateY(3px);
+    }
+
+    70% {
+        transform: translateY(0);
+    }
+
+    85% {
+        transform: translateY(-1.5px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.activeKeyUp {
+    animation: activeUp .5s;
+}
+
+.activeKeyDown {
+    animation: activeDown .5s;
 }

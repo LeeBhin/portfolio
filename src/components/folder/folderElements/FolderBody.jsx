@@ -7,17 +7,20 @@ import FolderPortfolio from "../folderInners/FolderPortfolio";
 import FolderHome from "../folderInners/FolderHome";
 
 function FolderBody({ folderInner }) {
+    if (folderInner == null) {
+        return;
+    }
 
     const homeIcons = { '홈': 'HOME', '갤러리': 'GALLERY', '자격증': 'CERTIFICATE' };
     const pinnedIcons = { '바탕 화면': 'DESKTOP', '다운로드': 'DOWNLOAD', '문서': 'DOCUMENT', '사진': 'PICTURE', '음악': 'MUSIC', '동영상': 'VIDEO' };
     const driveIcons = { 'BenDrive': 'DRIVE', '내 PC': 'MYPC', '네트워크': 'NETWORK' };
 
     const components = {
+        FolderHome,
         FolderLeebhin,
         FolderCertificate,
-        FolderPicture,
         FolderPortfolio,
-        FolderHome
+        FolderPicture
     };
 
     const InnerComponent = components[folderInner];

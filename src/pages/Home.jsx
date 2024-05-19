@@ -1,7 +1,7 @@
 import '../styles/home.css'
 
 import { Images } from '../images/Images';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Taskbar from "../components/Taskbar";
 import SearchPopup from '../components/SearchPopup';
@@ -16,14 +16,14 @@ function Home() {
     const [folder, setFolder] = useState([]);
     const [isFolderOn, setIsFolderOn] = useState(false)
     const [folderTrigger, setFolderTrigger] = useState(null)
-    const desktopRef = useRef(null);
+    const [activeWidth, setActiveWidth] = useState('')
 
     const [folders, setFolders] = useState([
         { name: 'FolderHome', value: false },
-        { name: 'Leebhin', value: false },
-        { name: 'Certificate', value: false },
-        { name: 'Portfolio', value: false },
-        { name: 'Picture', value: false }
+        { name: 'FolderLeebhin', value: false },
+        { name: 'FolderCertificate', value: false },
+        { name: 'FolderPortfolio', value: false },
+        { name: 'FolderPicture', value: false }
     ]);
 
     useEffect(() => {
@@ -73,10 +73,6 @@ function Home() {
         };
     }, [isSearchOn]);
 
-    const handleIconClick = (iconName) => {
-        setActiveIcon(iconName);
-    };
-
     useEffect(() => {
         togglePopupMove('.searchPopup', isSearchOn, 'searchUp', 'searchDown');
         togglePopupMove('.startPopupWrap', isStartOn, 'startUp', 'startDown');
@@ -113,18 +109,15 @@ function Home() {
         }
     }
 
+    const trueCount = folders.filter(folder => folder.value === true).length;
+
     // 폴더 hoverDiv 여부
     useEffect(() => {
-        if (folder.length === 1 && folders.filter(folders => folders.value === true).length === 1) {
+        if (folderLength === 1 && trueCount === 1) {
             setIsFolderOn(true);
         } else {
             setIsFolderOn(false);
         }
-    }, [folder, folders]);
-
-    useEffect(() => {
-        console.log(folder);
-        console.log(folders);
     }, [folder, folders]);
 
     // 폴더 최소화 여부
@@ -139,51 +132,132 @@ function Home() {
         });
     };
 
-    const addFolder = (inner) => {
-        setFolder([...folder, { inner }]);
+    const handleIconClick = (iconName) => {
+        setActiveIcon(iconName);
     };
 
-    const dropFolder = (inner) => {
-        setFolder(folder.filter(item => item.inner !== inner));
+    const addFolder = (target) => {
+        setFolder([...folder, target]);
     };
 
-    const folderClick = (target) => {
-        // 폴더가 하나도 열려있지 않을 때
-        if (folder.length === 0 && folders.filter(folders => folders.value === true).length === 0) {
-            addFolder(target);
+    const dropFolder = (target) => {
+        setFolder(prevFolder => prevFolder.filter(item => item !== target));
+    };
+
+    const folderLength = folder.length;
+
+    // 폴더 activeBar
+    useEffect(() => {
+        console.log(folderLength)
+        if (folderLength > 0 && trueCount > 0) {
+            setActiveWidth('long')
+        } else if (folderLength > 0 && trueCount === 0) {
+            setActiveWidth('short')
+        } else {
+            setActiveWidth('close')
         }
-        // 폴더 하나가 열려 있을 때
-        else if (folder.length === 1 && folders.filter(folders => folders.value === true).length === 1) {
-            setFolderTrigger('min');
+        console.log(folder, folders)
+    }, [folder, folders]);
+
+    useEffect(() => {
+        const active = document.querySelector('.activeBar');
+        const file = document.querySelector('.fileExImg');
+
+        if (activeWidth === 'long') {
+            active.style.width = '40%';
+            active.style.backgroundColor = '#0078D4';
+            file.classList.remove('activeKeyDown');
+            file.classList.add('activeKeyUp');
+        } else if (activeWidth === 'short') {
+            active.style.width = '15%';
+            active.style.backgroundColor = '#747882';
+            file.classList.remove('activeKeyUp');
+            file.classList.add('activeKeyDown');
+        } else {
+            active.style.width = '0%';
+            active.style.backgroundColor = '#747882';
         }
-        // 폴더 하나가 최소화 상태일 때
-        else if (folder.length === 1 && folders.filter(folders => folders.value === true).length === 0) {
-            setFolderTrigger('reset');
-        }
-        // 다른 상황 처리
-        else {
-            // 다른 상황에 대한 처리 추가
+    }, [activeWidth]);
+
+
+    const folderClick = (target, which = 'desk') => {
+        const trueCount = folders.filter(aFolder => aFolder.value === true).length;
+
+        if (which === 'task') {
+            if (folderLength === 0 && trueCount === 0) {
+                addFolder(target);
+            } else if (folderLength === 1 && trueCount === 1) {
+                setFolderTrigger('min');
+            } else if (folderLength === 1 && trueCount === 0) {
+                setFolderTrigger('reset');
+            } else {
+                // 활성화 폴더들 표시하기
+            }
+        } else {
+            if (folderLength === 0 && trueCount === 0) {
+                addFolder(target);
+            } else if (folderLength > 0 && trueCount > 0) {
+                if (folder.includes(target)) {
+                    // 이미 열린 폴더 제일 앞으로
+                } else {
+                    addFolder(target);
+                    console.log(target, '추가');
+                }
+            } else if (folderLength > 0 && trueCount === 0) {
+                if (folder[0] === target) {
+                    setFolderTrigger('reset');
+                } else {
+                    addFolder(target);
+                }
+            }
         }
     }
 
     return (
         <div className="home">
-            <div className="background" ref={desktopRef}>
-                <DesktopIcon Icon={Images.USERFOLDER} Name={'이빈'} onClick={() => handleIconClick('my')} isActive={activeIcon === 'my'} />
-                <DesktopIcon Icon={Images.FOLDER} Name={'자격증'} onClick={() => handleIconClick('cert')} isActive={activeIcon === 'cert'} />
-                <DesktopIcon Icon={Images.FOLDER} Name={'포트폴리오'} onClick={() => handleIconClick('port')} isActive={activeIcon === 'port'} />
-                <DesktopIcon Icon={Images.PICTURESFOLDER} Name={'사진'} onClick={() => handleIconClick('img')} isActive={activeIcon === 'img'} />
+            <div className="background">
+                <DesktopIcon
+                    Icon={Images.USERFOLDER}
+                    Name={'이빈'}
+                    onClick={() => handleIconClick('FolderLeebhin')}
+                    onDoubleClick={() => folderClick('FolderLeebhin')}
+                />
+
+                <DesktopIcon
+                    Icon={Images.FOLDER}
+                    Name={'자격증'}
+                    onClick={() => handleIconClick('FolderCertificate')}
+                    onDoubleClick={() => folderClick('FolderCertificate')}
+                    isActive={activeIcon === 'FolderCertificate'}
+                />
+
+                <DesktopIcon
+                    Icon={Images.FOLDER}
+                    Name={'포트폴리오'}
+                    onClick={() => handleIconClick('FolderPortfolio')}
+                    onDoubleClick={() => folderClick('FolderPortfolio')}
+                    isActive={activeIcon === 'FolderPortfolio'}
+                />
+                <DesktopIcon
+                    Icon={Images.PICTURESFOLDER}
+                    Name={'사진'}
+                    onClick={() => handleIconClick('FolderPicture')}
+                    onDoubleClick={() => folderClick('FolderPicture')}
+                    isActive={activeIcon === 'FolderPicture'}
+                />
             </div>
 
-            {folder.map((folderItem, index) => (
+            {folder.map((folderItem) => (
                 <Folder
-                    folderInner={folderItem.inner}
+                    folderInner={folderItem}
                     folderState={folderState}
-                    dropFolder={dropFolder}
-                    key={index}
-                    index={index}
+                    dropFolder={() => dropFolder(folderItem)}
+                    key={folderItem}
+                    index={folderItem}
                     folderTrigger={folderTrigger}
                     setFolderTrigger={setFolderTrigger}
+                    setActiveWidth={setActiveWidth}
+                    folders={folders}
                 />
             ))}
 

@@ -38,7 +38,6 @@ function Taskbar({ changeSearch, changeStart, isSearch, isStart, folderClick, is
     useEffect(() => {
         setIsSearchOn(isSearch)
         setIsStartOn(isStart)
-        console.log(isFolderOn)
     }, [isSearch, isStart]);
 
     useEffect(() => {
@@ -64,7 +63,7 @@ function Taskbar({ changeSearch, changeStart, isSearch, isStart, folderClick, is
     }
 
     const handleFolder = (target) => {
-        folderClick(target);
+        folderClick(target, 'task');
     }
 
     return (
@@ -93,6 +92,7 @@ function Taskbar({ changeSearch, changeStart, isSearch, isStart, folderClick, is
                 <div className="fileExpWrap">
                     <div id="hoverDiv" style={{ opacity: isFolderOn ? "1" : "" }}></div>
                     <div className="fileExImg"></div>
+                    <div className="activeBar"></div>
                 </div>
             </div>
 

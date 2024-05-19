@@ -4,15 +4,13 @@ import { PiPlus, PiMinus } from "react-icons/pi";
 import { GrClose } from "react-icons/gr";
 import { TbSquare } from "react-icons/tb";
 
-function TopHeader({ closeFolder, minFolder, setFolderTrigger }) {
+function TopHeader({ closeFolder, minFolder }) {
 
     const minHandle = () => {
-        setFolderTrigger('min')
         minFolder();
     }
 
     const closeHandle = () => {
-        setFolderTrigger('close')
         closeFolder();
     }
 
@@ -32,7 +30,7 @@ function TopHeader({ closeFolder, minFolder, setFolderTrigger }) {
                                 <div className="iconTxt">홈</div>
                             </div>
 
-                            <div className="tabClose"><img src={Images.FOLDERTABX} alt="tabClose" /></div>
+                            <div className="tabClose" onClick={closeHandle}><img src={Images.FOLDERTABX} alt="tabClose" /></div>
                         </div>
                         <div className="tabPlus"><PiPlus /></div>
                     </div>

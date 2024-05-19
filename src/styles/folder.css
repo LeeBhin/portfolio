@@ -3,7 +3,7 @@
     border-radius: 10px;
     background-color: #ffffff;
     border: solid 1px #989a9b;
-    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.15);
     overflow: hidden;
 }
 
@@ -490,6 +490,6 @@
 
 .folder .folderInner {
     background-color: aqua;
-    width:calc(100% - 180px);
+    width: calc(100% - 180px);
     overflow-y: auto;
 }
