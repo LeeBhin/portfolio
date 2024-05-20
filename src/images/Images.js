@@ -59,6 +59,8 @@ import UPARROW from '../images/uparrow.png'
 import RELOAD from '../images/reload.png'
 import NEWMAKE from '../images/newmake.png'
 
+import DESKICON from '../images/deskicon.png'
+
 const Images = {
     HTML,
     CSS,
@@ -120,6 +122,8 @@ const Images = {
     UPARROW,
     RELOAD,
     NEWMAKE,
+
+    DESKICON,
 };
 
 export { Images };

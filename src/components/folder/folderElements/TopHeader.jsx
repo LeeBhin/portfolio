@@ -4,8 +4,7 @@ import { PiPlus, PiMinus } from "react-icons/pi";
 import { GrClose } from "react-icons/gr";
 import { TbSquare } from "react-icons/tb";
 
-function TopHeader({ closeFolder, minFolder }) {
-
+function TopHeader({ closeFolder, minFolder, directory }) {
     const minHandle = () => {
         minFolder();
     }
@@ -27,7 +26,7 @@ function TopHeader({ closeFolder, minFolder }) {
                                 <div className="tabIcon">
                                     <img src={Images.HOME} alt="home" />
                                 </div>
-                                <div className="iconTxt">홈</div>
+                                <div className="iconTxt">{directory}</div>
                             </div>
 
                             <div className="tabClose" onClick={closeHandle}><img src={Images.FOLDERTABX} alt="tabClose" /></div>

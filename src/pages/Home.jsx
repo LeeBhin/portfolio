@@ -148,7 +148,6 @@ function Home() {
 
     // 폴더 activeBar
     useEffect(() => {
-        console.log(folderLength)
         if (folderLength > 0 && trueCount > 0) {
             setActiveWidth('long')
         } else if (folderLength > 0 && trueCount === 0) {
@@ -156,7 +155,6 @@ function Home() {
         } else {
             setActiveWidth('close')
         }
-        console.log(folder, folders)
     }, [folder, folders]);
 
     useEffect(() => {
@@ -201,7 +199,6 @@ function Home() {
                     // 이미 열린 폴더 제일 앞으로
                 } else {
                     addFolder(target);
-                    console.log(target, '추가');
                 }
             } else if (folderLength > 0 && trueCount === 0) {
                 if (folder[0] === target) {
@@ -253,7 +250,6 @@ function Home() {
                     folderState={folderState}
                     dropFolder={() => dropFolder(folderItem)}
                     key={folderItem}
-                    index={folderItem}
                     folderTrigger={folderTrigger}
                     setFolderTrigger={setFolderTrigger}
                     setActiveWidth={setActiveWidth}

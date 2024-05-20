@@ -6,10 +6,7 @@ import FolderPicture from "../folderInners/FolderPicture";
 import FolderPortfolio from "../folderInners/FolderPortfolio";
 import FolderHome from "../folderInners/FolderHome";
 
-function FolderBody({ folderInner }) {
-    if (folderInner == null) {
-        return;
-    }
+function FolderBody({ folderInner, setFirstDir, transInner }) {
 
     const homeIcons = { '홈': 'HOME', '갤러리': 'GALLERY', '자격증': 'CERTIFICATE' };
     const pinnedIcons = { '바탕 화면': 'DESKTOP', '다운로드': 'DOWNLOAD', '문서': 'DOCUMENT', '사진': 'PICTURE', '음악': 'MUSIC', '동영상': 'VIDEO' };
@@ -32,7 +29,7 @@ function FolderBody({ folderInner }) {
                 <div className="leftHeader">
                     <div className="homeWrap leftWrap">
                         {Object.entries(homeIcons).map(([txt, icon]) => (
-                            <div key={icon} className='iconWrap'>
+                            <div key={icon} className='iconWrap' onClick={() => setFirstDir(transInner(txt))}>
                                 <div className="icon"><img src={Images[icon]} alt={txt} /></div>
                                 <div className="txt">{txt}</div>
                             </div>
@@ -43,7 +40,7 @@ function FolderBody({ folderInner }) {
 
                     <div className="pinnedWrap leftWrap">
                         {Object.entries(pinnedIcons).map(([txt, icon]) => (
-                            <div key={icon} className='iconWrap'>
+                            <div key={icon} className='iconWrap' onClick={() => setFirstDir(transInner(txt))}>
                                 <div className="icon"><img src={Images[icon]} alt={txt} /></div>
                                 <div className="txt">{txt}</div>
 
@@ -58,7 +55,7 @@ function FolderBody({ folderInner }) {
 
                     <div className="driveWrap leftWrap">
                         {Object.entries(driveIcons).map(([txt, icon]) => (
-                            <div key={icon} className='iconWrap'>
+                            <div key={icon} className='iconWrap' onClick={() => setFirstDir(transInner(txt))}>
                                 <div className="icon"><img src={Images[icon]} alt={txt} /></div>
                                 <div className="txt">{txt}</div>
                             </div>

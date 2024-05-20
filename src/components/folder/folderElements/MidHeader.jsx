@@ -3,8 +3,13 @@ import { Images } from "../../../images/Images";
 import { GoHome } from "react-icons/go";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { IoIosSearch } from "react-icons/io";
+import { useEffect } from "react";
 
-function MidHeader() {
+function MidHeader({ directory }) {
+
+    useEffect(() => {
+        console.log('af', directory)
+    }, [directory])
     return (
         <>
             <div className="midHeader">
@@ -18,7 +23,7 @@ function MidHeader() {
                 <div className="directory">
                     <div className="icon"><GoHome size={"17px"} /></div>
                     <div className="arrow" id='btn'><RiArrowRightSLine /></div>
-                    <div className="txt" id='btn'>홈</div>
+                    <div className="txt" id='btn'>{directory}</div>
                 </div>
 
                 <div className="search">

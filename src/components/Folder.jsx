@@ -6,15 +6,18 @@ import MidHeader from './folder/folderElements/MidHeader';
 import BotHeader from './folder/folderElements/BotHeader';
 import FolderBody from './folder/folderElements/FolderBody';
 
-function Folder({ folderInner, folderState, index, dropFolder, folderTrigger, setFolderTrigger, folders }) {
+function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolderTrigger }) {
     const [size, setSize] = useState({ width: 1000, height: 600 });
     const [position, setPosition] = useState({ x: 430, y: 130 });
+    const [firstDir, setFirstDir] = useState(folderInner);
+    const [directory, setDirectory] = useState([]);
+
+    useEffect(() => setDirectory([transInner(firstDir)]), [firstDir]);
 
     // 폴더 닫기
     const closeFolder = () => {
 
         const selectedFolder = document.querySelector(`.f${folderInner}`);
-        console.log('닫기', folderInner)
 
         selectedFolder.style.transformOrigin = '50% 50%';
         selectedFolder.style.transition = "transform 0.2s cubic-bezier(0.88, 0, 0.88, 1), opacity 0.15s cubic-bezier(0.88, 0, 0.88, 1)";
@@ -29,8 +32,7 @@ function Folder({ folderInner, folderState, index, dropFolder, folderTrigger, se
 
     // 컴포넌트 생성 후 동작
     const firstFolder = () => {
-        console.log('first', index)
-        const selectedFolder = document.querySelector(`.f${index}`);
+        const selectedFolder = document.querySelector(`.f${folderInner}`);
         const folderStyle = selectedFolder.style;
 
         folderStyle.transform += ' scale(.8)';
@@ -43,9 +45,8 @@ function Folder({ folderInner, folderState, index, dropFolder, folderTrigger, se
 
     // 열리는 애니메이션
     const openFolder = () => {
-        console.log('open', index)
 
-        const selectedFolder = document.querySelector(`.f${index}`);
+        const selectedFolder = document.querySelector(`.f${folderInner}`);
         const folderStyle = selectedFolder.style;
         folderStyle.transition = "transform 0.2s ease, opacity 0.15s ease";
         folderStyle.transform = folderStyle.transform.replace(/scale\([\d.]+\)/, 'scale(1)');
@@ -62,9 +63,8 @@ function Folder({ folderInner, folderState, index, dropFolder, folderTrigger, se
 
     // 최소화
     const minFolder = () => {
-        console.log('최소화', index)
 
-        const selectedFolder = document.querySelector(`.f${index}`);
+        const selectedFolder = document.querySelector(`.f${folderInner}`);
         const folderStyle = selectedFolder.style;
 
         selectedFolder.style.transformOrigin = `${originX}px ${originY}px`;
@@ -77,9 +77,8 @@ function Folder({ folderInner, folderState, index, dropFolder, folderTrigger, se
 
     // 최소화 -> 복구
     const reset = () => {
-        console.log('복구', index)
 
-        const selectedFolder = document.querySelector(`.f${index}`);
+        const selectedFolder = document.querySelector(`.f${folderInner}`);
         const folderStyle = selectedFolder.style;
 
         folderStyle.transition = "transform .2s ease";
@@ -95,7 +94,7 @@ function Folder({ folderInner, folderState, index, dropFolder, folderTrigger, se
 
     // 기본
     const transitionReset = () => {
-        const selectedFolder = document.querySelector(`.f${index}`);
+        const selectedFolder = document.querySelector(`.f${folderInner}`);
         const folderStyle = selectedFolder.style;
         folderStyle.transition = "none";
     }
@@ -114,8 +113,20 @@ function Folder({ folderInner, folderState, index, dropFolder, folderTrigger, se
         firstFolder();
     }, []);
 
+    const transInner = (pwd) => {
+        const pwdMap = {
+            'FolderHome': '홈',
+            'FolderLeebhin': '이빈',
+            'FolderCertificate': '자격증',
+            'FolderPortfolio': '포트폴리오',
+            'FolderPicture': '사진'
+        }
+
+        return pwd.replace(/\b\w+\b/g, match => pwdMap[match] || match);
+    }
+
     return (
-        <Rnd className={`folder f${index}`}
+        <Rnd className={`folder f${folderInner}`}
             size={size}
             position={position}
             dragHandleClassName="folderHeader"
@@ -143,10 +154,19 @@ function Folder({ folderInner, folderState, index, dropFolder, folderTrigger, se
                     closeFolder={closeFolder}
                     minFolder={minFolder}
                     setFolderTrigger={setFolderTrigger}
+                    directory={directory}
                 />
-                <MidHeader />
+                <MidHeader
+                    directory={directory}
+                    transInner={transInner}
+                />
                 <BotHeader />
-                <FolderBody folderInner={folderInner} />
+                <FolderBody
+                    folderInner={folderInner}
+                    setFirstDir={setFirstDir}
+                    firstDir={firstDir}
+                    transInner={transInner}
+                />
             </div >
         </Rnd >
     );
