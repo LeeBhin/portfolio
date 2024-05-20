@@ -28,6 +28,7 @@ import KCCI from '../images/kcci.png';
 import KPC from '../images/kpc.png';
 
 import FOLDER from '../images/folder.png';
+import CERTIFICATEFOLDER from '../images/certificatefolder.png';
 import USERFOLDER from '../images/userfolder.png';
 import PICTURESFOLDER from '../images/picturesfolder.png';
 import DESKTOP from '../images/desktop.png';
@@ -95,6 +96,7 @@ const Images = {
     KPC,
 
     FOLDER,
+    CERTIFICATEFOLDER,
     USERFOLDER,
     PICTURESFOLDER,
     DESKTOP,

@@ -13,18 +13,14 @@ function Home() {
     const [isSearchOn, setIsSearchOn] = useState(false);
     const [isStartOn, setIsStartOn] = useState(false);
     const [activeIcon, setActiveIcon] = useState(null);
-    const [folder, setFolder] = useState([]);
     const [isFolderOn, setIsFolderOn] = useState(false)
     const [folderTrigger, setFolderTrigger] = useState(null)
     const [activeWidth, setActiveWidth] = useState('')
 
-    const [folders, setFolders] = useState([
-        { name: 'FolderHome', value: false },
-        { name: 'FolderLeebhin', value: false },
-        { name: 'FolderCertificate', value: false },
-        { name: 'FolderPortfolio', value: false },
-        { name: 'FolderPicture', value: false }
-    ]);
+    const [folder, setFolder] = useState([]);
+    const [folders, setFolders] = useState([]);
+    const [double, setDouble] = useState([]);
+    const [openPos, setOpenPos] = useState([]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -136,13 +132,63 @@ function Home() {
         setActiveIcon(iconName);
     };
 
-    const addFolder = (target) => {
-        setFolder([...folder, target]);
+    // 가장 높이 있는 폴더
+    const getMaxZIndex = () => {
+        const folderElements = document.querySelectorAll('.folder');
+        let maxZIndex = 0;
+        folderElements.forEach(item => {
+            const zIndex = parseInt(window.getComputedStyle(item).zIndex);
+            if (!isNaN(zIndex) && zIndex > maxZIndex) {
+                maxZIndex = zIndex;
+            }
+        });
+        return maxZIndex;
     };
 
+    // 폴더 추가
+    const addFolder = (target) => {
+        setFolder(prevFolder => {
+            const newIndex = prevFolder.length;
+            const newTarget = `${target}${newIndex}`;
+            return [...prevFolder, newTarget];
+        });
+
+        setFolders(prevFolders => {
+            const newIndex = prevFolders.length;
+            const newFolderName = `${target}${newIndex}`;
+            return [...prevFolders, { name: newFolderName, value: true }];
+        });
+
+        setDouble(prevDouble => [...prevDouble, transInner(target)]);
+
+        setOpenPos()
+    };
+
+    // 폴더 삭제
     const dropFolder = (target) => {
         setFolder(prevFolder => prevFolder.filter(item => item !== target));
+
+        setFolders(prevFolders => prevFolders.filter(folder => folder.name !== target));
+
+        setDouble(prevDouble => prevDouble.filter(item => item !== transInner(target)));
     };
+
+    const transInner = (pwd) => {
+        const pwdMap = {
+            'FolderHome': '홈',
+            'FolderLeebhin': '이빈',
+            'FolderCertificate': '자격증',
+            'FolderPortfolio': '포트폴리오',
+            'FolderPicture': '사진',
+            '홈': 'FolderHome',
+            '이빈': 'FolderLeebhin',
+            '자격증': 'FolderCertificate',
+            '포트폴리오': 'FolderPortfolio',
+            '사진': 'FolderPicture'
+        }
+        pwd = pwd.replace(/\d+$/, '')
+        return pwd.replace(/\b\w+\b/g, match => pwdMap[match] || match);
+    }
 
     const folderLength = folder.length;
 
@@ -157,6 +203,7 @@ function Home() {
         }
     }, [folder, folders]);
 
+    // actiebar 제어
     useEffect(() => {
         const active = document.querySelector('.activeBar');
         const file = document.querySelector('.fileExImg');
@@ -177,13 +224,26 @@ function Home() {
         }
     }, [activeWidth]);
 
-
+    // 폴더 클릭했을때(teskbar, desktop)
     const folderClick = (target, which = 'desk') => {
+
         const trueCount = folders.filter(aFolder => aFolder.value === true).length;
+
+        if (double.includes(transInner(target))) {
+            if (which !== 'task') {
+
+                const upElement = document.querySelector(`.folder[class*="${target}"]`);
+                if (upElement) {
+                    const maxZIndex = getMaxZIndex();
+                    upElement.style.zIndex = maxZIndex + 1;
+                }
+                return;
+            }
+        }
 
         if (which === 'task') {
             if (folderLength === 0 && trueCount === 0) {
-                addFolder(target);
+                addFolder('FolderHome');
             } else if (folderLength === 1 && trueCount === 1) {
                 setFolderTrigger('min');
             } else if (folderLength === 1 && trueCount === 0) {
@@ -196,7 +256,6 @@ function Home() {
                 addFolder(target);
             } else if (folderLength > 0 && trueCount > 0) {
                 if (folder.includes(target)) {
-                    // 이미 열린 폴더 제일 앞으로
                 } else {
                     addFolder(target);
                 }
@@ -218,10 +277,11 @@ function Home() {
                     Name={'이빈'}
                     onClick={() => handleIconClick('FolderLeebhin')}
                     onDoubleClick={() => folderClick('FolderLeebhin')}
+                    isActive={activeIcon === 'FolderLeebhin'}
                 />
 
                 <DesktopIcon
-                    Icon={Images.FOLDER}
+                    Icon={Images.CERTIFICATEFOLDER}
                     Name={'자격증'}
                     onClick={() => handleIconClick('FolderCertificate')}
                     onDoubleClick={() => folderClick('FolderCertificate')}
@@ -244,16 +304,22 @@ function Home() {
                 />
             </div>
 
-            {folder.map((folderItem) => (
+            {folder.map((folderItem, index) => (
                 <Folder
                     folderInner={folderItem}
                     folderState={folderState}
                     dropFolder={() => dropFolder(folderItem)}
                     key={folderItem}
+                    index={index}
                     folderTrigger={folderTrigger}
                     setFolderTrigger={setFolderTrigger}
                     setActiveWidth={setActiveWidth}
                     folders={folders}
+                    setFolder={setFolder}
+                    setFolders={setFolders}
+                    transInner={transInner}
+                    setDouble={setDouble}
+                    getMaxZIndex={getMaxZIndex}
                 />
             ))}
 

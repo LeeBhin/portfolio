@@ -5,7 +5,6 @@ import { GrClose } from "react-icons/gr";
 import { TbSquare } from "react-icons/tb";
 
 function TopHeader({ closeFolder, minFolder, directory }) {
-    const lastDir = directory[directory.length - 1]
 
     const minHandle = () => {
         minFolder();
@@ -18,21 +17,25 @@ function TopHeader({ closeFolder, minFolder, directory }) {
     const transDir = (dir) => {
         const dirMap = {
             '홈': 'HOME',
+            '이빈': 'USERFOLDER',
             '갤러리': 'GALLERY',
             '자격증': 'CERTIFICATE',
             '바탕 화면': 'DESKTOP',
             '다운로드': 'DOWNLOAD',
             '문서': 'DOCUMENT',
-            '사진': 'PICTURE',
+            '사진': 'PICTURESFOLDER',
             '음악': 'MUSIC',
             '동영상': 'VIDEO',
             'BenDrive': 'DRIVE',
             '내 PC': 'MYPC',
+            '포트폴리오': 'FOLDER',
             '네트워크': 'NETWORK'
         };
 
         return dirMap[dir] || dir;
     };
+
+    const lastDir = directory[directory.length - 1]
     const transedLastDir = transDir(lastDir);
 
     return (

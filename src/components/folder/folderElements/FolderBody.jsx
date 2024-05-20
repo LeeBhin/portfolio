@@ -6,7 +6,7 @@ import FolderPicture from "../folderInners/FolderPicture";
 import FolderPortfolio from "../folderInners/FolderPortfolio";
 import FolderHome from "../folderInners/FolderHome";
 
-function FolderBody({ folderInner, setFirstDir, transInner }) {
+function FolderBody({ folderInner, setFirstDir, transInner, setFolder, setFolders, directory, setDouble }) {
 
     const homeIcons = { '홈': 'HOME', '갤러리': 'GALLERY', '자격증': 'CERTIFICATE' };
     const pinnedIcons = { '바탕 화면': 'DESKTOP', '다운로드': 'DOWNLOAD', '문서': 'DOCUMENT', '사진': 'PICTURE', '음악': 'MUSIC', '동영상': 'VIDEO' };
@@ -20,7 +20,12 @@ function FolderBody({ folderInner, setFirstDir, transInner }) {
         FolderPicture
     };
 
-    const InnerComponent = components[folderInner];
+    const InnerComponent = components[folderInner.replace(/\d+$/, '')];
+
+    const navClick = (txt) => {
+        setFirstDir(transInner(txt));
+        setDouble(prevDouble => prevDouble.filter(item => item !== transInner(folderInner)));
+    }
 
     return (
         <>
@@ -29,7 +34,7 @@ function FolderBody({ folderInner, setFirstDir, transInner }) {
                 <div className="leftHeader">
                     <div className="homeWrap leftWrap">
                         {Object.entries(homeIcons).map(([txt, icon]) => (
-                            <div key={icon} className='iconWrap' onClick={() => setFirstDir(transInner(txt))}>
+                            <div key={icon} className='iconWrap' onClick={() => navClick(txt)}>
                                 <div className="icon"><img src={Images[icon]} alt={txt} /></div>
                                 <div className="txt">{txt}</div>
                             </div>
@@ -40,7 +45,7 @@ function FolderBody({ folderInner, setFirstDir, transInner }) {
 
                     <div className="pinnedWrap leftWrap">
                         {Object.entries(pinnedIcons).map(([txt, icon]) => (
-                            <div key={icon} className='iconWrap' onClick={() => setFirstDir(transInner(txt))}>
+                            <div key={icon} className='iconWrap' onClick={() => navClick(txt)}>
                                 <div className="icon"><img src={Images[icon]} alt={txt} /></div>
                                 <div className="txt">{txt}</div>
 
@@ -55,7 +60,7 @@ function FolderBody({ folderInner, setFirstDir, transInner }) {
 
                     <div className="driveWrap leftWrap">
                         {Object.entries(driveIcons).map(([txt, icon]) => (
-                            <div key={icon} className='iconWrap' onClick={() => setFirstDir(transInner(txt))}>
+                            <div key={icon} className='iconWrap' onClick={() => navClick(txt)}>
                                 <div className="icon"><img src={Images[icon]} alt={txt} /></div>
                                 <div className="txt">{txt}</div>
                             </div>

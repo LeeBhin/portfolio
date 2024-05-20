@@ -1,15 +1,20 @@
 import { Images } from "../../../images/Images";
 
-import { GoHome } from "react-icons/go";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { IoIosSearch } from "react-icons/io";
 import { useEffect } from "react";
 
 function MidHeader({ directory }) {
 
-    useEffect(() => {
-        console.log('af', directory)
-    }, [directory])
+    const transDir = (dir) => ({
+        '홈': 'HOMEICON',
+        '갤러리': 'GALLERYICON',
+        '네트워크': 'NETWORKICON'
+    }[dir] || 'DESKICON');
+
+    const lastDir = directory[directory.length - 1]
+    const transedLastDir = transDir(lastDir);
+
     return (
         <>
             <div className="midHeader">
@@ -21,7 +26,7 @@ function MidHeader({ directory }) {
                 </div>
 
                 <div className="directory">
-                    <div className="icon"><GoHome size={"17px"} /></div>
+                    <div className="icon"> <img src={Images[transedLastDir]} alt={transedLastDir} /></div>
                     <div className="arrow" id='btn'><RiArrowRightSLine /></div>
                     <div className="txt" id='btn'>{directory}</div>
                 </div>
