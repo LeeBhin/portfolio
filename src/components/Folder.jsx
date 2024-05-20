@@ -13,6 +13,9 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
     const [directory, setDirectory] = useState([]);
 
     useEffect(() => setDirectory([transInner(firstDir)]), [firstDir]);
+    // 탭 txt는 directory 마지막 요소로
+    // folderinner에서 폴더 들어가면 directory += 폴더 이름
+    // 폴더 경로는 directory(ex.['바탕화면','포트폴리오','hsf']) 참조
 
     // 폴더 닫기
     const closeFolder = () => {

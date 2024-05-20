@@ -5,6 +5,8 @@ import { GrClose } from "react-icons/gr";
 import { TbSquare } from "react-icons/tb";
 
 function TopHeader({ closeFolder, minFolder, directory }) {
+    const lastDir = directory[directory.length - 1]
+
     const minHandle = () => {
         minFolder();
     }
@@ -12,6 +14,26 @@ function TopHeader({ closeFolder, minFolder, directory }) {
     const closeHandle = () => {
         closeFolder();
     }
+
+    const transDir = (dir) => {
+        const dirMap = {
+            '홈': 'HOME',
+            '갤러리': 'GALLERY',
+            '자격증': 'CERTIFICATE',
+            '바탕 화면': 'DESKTOP',
+            '다운로드': 'DOWNLOAD',
+            '문서': 'DOCUMENT',
+            '사진': 'PICTURE',
+            '음악': 'MUSIC',
+            '동영상': 'VIDEO',
+            'BenDrive': 'DRIVE',
+            '내 PC': 'MYPC',
+            '네트워크': 'NETWORK'
+        };
+
+        return dirMap[dir] || dir;
+    };
+    const transedLastDir = transDir(lastDir);
 
     return (
         <>
@@ -24,9 +46,9 @@ function TopHeader({ closeFolder, minFolder, directory }) {
                             </svg>
                             <div className="iconWrap">
                                 <div className="tabIcon">
-                                    <img src={Images.HOME} alt="home" />
+                                    <img src={Images[transedLastDir]} alt={transedLastDir} />
                                 </div>
-                                <div className="iconTxt">{directory}</div>
+                                <div className="iconTxt">{lastDir}</div>
                             </div>
 
                             <div className="tabClose" onClick={closeHandle}><img src={Images.FOLDERTABX} alt="tabClose" /></div>

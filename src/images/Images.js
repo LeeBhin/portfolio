@@ -23,43 +23,46 @@ import FIREBASE from '../images/firebase.png';
 import SOCKET from '../images/socket.png';
 import EXPRESS from '../images/express.png';
 
-import HRDK from '../images/hrdk.png'
-import KCCI from '../images/kcci.png'
-import KPC from '../images/kpc.png'
+import HRDK from '../images/hrdk.png';
+import KCCI from '../images/kcci.png';
+import KPC from '../images/kpc.png';
 
-import FOLDER from '../images/folder.png'
-import USERFOLDER from '../images/userfolder.png'
-import PICTURESFOLDER from '../images/picturesfolder.png'
-import DESKTOP from '../images/desktop.png'
-import HOME from '../images/home.png'
-import SCISSORS from '../images/scissors.png'
-import COPY from '../images/copy.png'
-import PASTE from '../images/paste.png'
-import RENAME from '../images/rename.png'
-import SHARE from '../images/share.png'
-import DELETE from '../images/delete.png'
-import SORT from '../images/sort.png'
-import VIEWBIG from '../images/viewBig.png'
-import GALLERY from '../images/gallery.png'
-import CERTIFICATE from '../images/certificate.png'
-import DOWNLOAD from '../images/download.png'
-import DOCUMENT from '../images/document.png'
-import PICTURE from '../images/picture.png'
-import MUSIC from '../images/music.png'
-import VIDEO from '../images/video.png'
-import DRIVE from '../images/drive.png'
-import MYPC from '../images/mypc.png'
-import NETWORK from '../images/network.png'
-import DETAIL from '../images/detail.png'
-import PIN from '../images/pin.png'
-import BELL from '../images/bell.png'
-import FOLDERTABX from '../images/foldertabx.png'
-import LEFTARROW from '../images/leftarrow.png'
-import UPARROW from '../images/uparrow.png'
-import RELOAD from '../images/reload.png'
-import NEWMAKE from '../images/newmake.png'
+import FOLDER from '../images/folder.png';
+import USERFOLDER from '../images/userfolder.png';
+import PICTURESFOLDER from '../images/picturesfolder.png';
+import DESKTOP from '../images/desktop.png';
+import HOME from '../images/home.png';
+import SCISSORS from '../images/scissors.png';
+import COPY from '../images/copy.png';
+import PASTE from '../images/paste.png';
+import RENAME from '../images/rename.png';
+import SHARE from '../images/share.png';
+import DELETE from '../images/delete.png';
+import SORT from '../images/sort.png';
+import VIEWBIG from '../images/viewBig.png';
+import GALLERY from '../images/gallery.png';
+import CERTIFICATE from '../images/certificate.png';
+import DOWNLOAD from '../images/download.png';
+import DOCUMENT from '../images/document.png';
+import PICTURE from '../images/picture.png';
+import MUSIC from '../images/music.png';
+import VIDEO from '../images/video.png';
+import DRIVE from '../images/drive.png';
+import MYPC from '../images/mypc.png';
+import NETWORK from '../images/network.png';
+import DETAIL from '../images/detail.png';
+import PIN from '../images/pin.png';
+import BELL from '../images/bell.png';
+import FOLDERTABX from '../images/foldertabx.png';
+import LEFTARROW from '../images/leftarrow.png';
+import UPARROW from '../images/uparrow.png';
+import RELOAD from '../images/reload.png';
+import NEWMAKE from '../images/newmake.png';
 
-import DESKICON from '../images/deskicon.png'
+import DESKICON from '../images/deskicon.png';
+import GALLERYICON from '../images/galleryicon.png';
+import FOLDERICON from '../images/foldericon.png';
+import NETWORKICON from '../images/networkicon.png';
 
 const Images = {
     HTML,
@@ -124,6 +127,9 @@ const Images = {
     NEWMAKE,
 
     DESKICON,
+    GALLERYICON,
+    FOLDERICON,
+    NETWORKICON,
 };
 
 export { Images };
