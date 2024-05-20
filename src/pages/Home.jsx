@@ -20,7 +20,7 @@ function Home() {
     const [folder, setFolder] = useState([]);
     const [folders, setFolders] = useState([]);
     const [double, setDouble] = useState([]);
-    const [openPos, setOpenPos] = useState([]);
+    const [openPos, setOpenPos] = useState({ x: 430, y: 130 });
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -161,7 +161,8 @@ function Home() {
 
         setDouble(prevDouble => [...prevDouble, transInner(target)]);
 
-        setOpenPos()
+        // 폴더 열리는 위치 ++
+        setOpenPos({ x: openPos.x + 20, y: openPos.y + 20 });
     };
 
     // 폴더 삭제
@@ -320,6 +321,7 @@ function Home() {
                     transInner={transInner}
                     setDouble={setDouble}
                     getMaxZIndex={getMaxZIndex}
+                    openPos={openPos}
                 />
             ))}
 

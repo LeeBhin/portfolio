@@ -6,7 +6,7 @@ import MidHeader from './folder/folderElements/MidHeader';
 import BotHeader from './folder/folderElements/BotHeader';
 import FolderBody from './folder/folderElements/FolderBody';
 
-function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolderTrigger, index, setFolder, setFolders, transInner, setDouble, getMaxZIndex }) {
+function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolderTrigger, index, setFolder, setFolders, transInner, setDouble, getMaxZIndex, openPos }) {
     const [size, setSize] = useState({ width: 1000, height: 600 });
     const [position, setPosition] = useState({ x: 430, y: 130 });
     const [firstDir, setFirstDir] = useState(folderInner);
@@ -113,6 +113,7 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
     // 초기 동작
     useEffect(() => {
         firstFolder();
+        setPosition(openPos)
     }, []);
 
     return (
