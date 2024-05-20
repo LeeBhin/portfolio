@@ -64,6 +64,10 @@ import DESKICON from '../images/deskicon.png';
 import GALLERYICON from '../images/galleryicon.png';
 import FOLDERICON from '../images/foldericon.png';
 import NETWORKICON from '../images/networkicon.png';
+import HOMEICON from '../images/homeicon.png';
+import DIRARROW from '../images/dirarrow.png';
+import BIGVIEW from '../images/bigview.png';
+import LINEVIEW from '../images/lineview.png';
 
 const Images = {
     HTML,
@@ -132,6 +136,11 @@ const Images = {
     GALLERYICON,
     FOLDERICON,
     NETWORKICON,
+    HOMEICON,
+    DIRARROW,
+
+    BIGVIEW,
+    LINEVIEW
 };
 
 export { Images };

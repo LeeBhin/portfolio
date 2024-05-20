@@ -199,15 +199,14 @@
 
 .folder .midHeader .directory .txt {
     width: auto;
-    padding: 0 8px;
+    padding: 0 9px;
 }
 
 .folder .midHeader .directory .icon {
-    width: 17px;
-    height: 17px;
+    width: 15px;
+    height: 15px;
     position: relative;
     display: flex;
-    color: #666666;
     margin: 0 8px 0 12px;
 }
 
@@ -431,7 +430,7 @@
 
 .folder .leftHeader {
     width: 175px;
-    height: 94%;
+    height: 98%;
     border-right: solid .1mm rgba(128, 128, 128, 0.08);
     display: flex;
     flex-direction: column;
@@ -513,11 +512,36 @@
 
 .folder .folderBody {
     display: flex;
-    height: calc(100% - 131px);
+    height: calc(100% - 135px);
 }
 
 .folder .folderInner {
     background-color: aqua;
     width: calc(100% - 180px);
     overflow-y: auto;
+}
+
+.folder .countAndView {
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 13px;
+    padding: 0;
+    width: 100%;
+    padding: 0 0 4px 13px;
+    display: flex;
+}
+
+.folder .selected {
+    margin-left: 33px;
+}
+
+.folder .footerWrap {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 0 22px 5px;
+    display: flex;
+    gap: 10px;
 }

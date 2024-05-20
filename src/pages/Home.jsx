@@ -162,7 +162,11 @@ function Home() {
         setDouble(prevDouble => [...prevDouble, transInner(target)]);
 
         // 폴더 열리는 위치 ++
-        setOpenPos({ x: openPos.x + 20, y: openPos.y + 20 });
+        if (folder.length > 0) {
+            setOpenPos({ x: openPos.x + 30, y: openPos.y + 30 });
+        } else {
+            setOpenPos({ x: 430, y: 130 });
+        }
     };
 
     // 폴더 삭제

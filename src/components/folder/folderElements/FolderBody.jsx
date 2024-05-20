@@ -6,7 +6,7 @@ import FolderPicture from "../folderInners/FolderPicture";
 import FolderPortfolio from "../folderInners/FolderPortfolio";
 import FolderHome from "../folderInners/FolderHome";
 
-function FolderBody({ folderInner, setFirstDir, transInner, setFolder, setFolders, directory, setDouble }) {
+function FolderBody({ folderInner, setFirstDir, transInner, directory, setDouble }) {
 
     const homeIcons = { '홈': 'HOME', '갤러리': 'GALLERY', '자격증': 'CERTIFICATE' };
     const pinnedIcons = { '바탕 화면': 'DESKTOP', '다운로드': 'DOWNLOAD', '문서': 'DOCUMENT', '사진': 'PICTURE', '음악': 'MUSIC', '동영상': 'VIDEO' };
@@ -70,6 +70,16 @@ function FolderBody({ folderInner, setFirstDir, transInner, setFolder, setFolder
 
                 <div className="folderInner">
                     <InnerComponent />
+                    <div className="countAndView">
+                        <span className="count">0개 항목</span>
+
+                        <span className="selected">0개 항목 선택함 0바이트</span>
+
+                        <div className="footerWrap">
+                            <img src={Images.LINEVIEW} alt="" />
+                            <img src={Images.BIGVIEW} alt="" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
