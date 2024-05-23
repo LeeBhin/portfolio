@@ -4,10 +4,18 @@ import { PiPlus, PiMinus } from "react-icons/pi";
 import { GrClose } from "react-icons/gr";
 import { TbSquare } from "react-icons/tb";
 
-function TopHeader({ closeFolder, minFolder, directory }) {
+function TopHeader({ closeFolder, minFolder, maxFolder, directory, isMax, reset }) {
 
     const minHandle = () => {
         minFolder();
+    }
+
+    const maxHandle = () => {
+        if (isMax) {
+            reset();
+        }else{
+            maxFolder();
+        }
     }
 
     const closeHandle = () => {
@@ -62,7 +70,7 @@ function TopHeader({ closeFolder, minFolder, directory }) {
 
                 <div className="minMaxWrap">
                     <div className="minBtn" onClick={minHandle}><PiMinus size={"14px"} /></div>
-                    <div className="maxBtn"><TbSquare size={"12px"} /></div>
+                    <div className="maxBtn" onClick={maxHandle}><TbSquare size={"12px"} /></div>
                     <div className="closeBtn" onClick={closeHandle}><GrClose size={"12px"} /></div>
                 </div>
             </div>

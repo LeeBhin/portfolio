@@ -11,12 +11,13 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
     const [position, setPosition] = useState({ x: 430, y: 130 });
     const [firstDir, setFirstDir] = useState(folderInner);
     const [directory, setDirectory] = useState([]);
+    const [isMax, setIsMax] = useState(false);
+    const [pSize, setPsize] = useState({ width: 1000, height: 600 });
 
     useEffect(() => setDirectory([transInner(firstDir)]), [firstDir]);
 
     // 폴더 닫기
     const closeFolder = () => {
-
         const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
 
         selectedFolder.style.transformOrigin = '50% 50%';
@@ -47,7 +48,6 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
 
     // 열리는 애니메이션
     const openFolder = () => {
-
         const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
         const folderStyle = selectedFolder.style;
         folderStyle.transition = "transform 0.2s ease, opacity 0.15s ease";
@@ -63,9 +63,31 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
     const originX = file.left;
     const originY = file.top;
 
+    // 최대화
+    const maxFolder = () => {
+        const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
+        const folderStyle = selectedFolder.style;
+
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        folderStyle.transformOrigin = '50% 50%';
+        folderStyle.transition = ".15s cubic-bezier(0.88, 0, 0.88, 1)";
+        folderStyle.width = `${viewportWidth}px`;
+        folderStyle.height = `${viewportHeight}px`;
+        folderStyle.transform = 'translate(0px, 0px) scale(1)';
+
+        folderState(folderInner, true);
+        setPsize({ width: size.width, height: size.height });
+        setSize({
+            width: parseInt(viewportWidth),
+            height: parseInt(viewportHeight)
+        });
+        setIsMax(true);
+    }
+
     // 최소화
     const minFolder = () => {
-
         const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
         const folderStyle = selectedFolder.style;
 
@@ -74,23 +96,31 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
         folderStyle.transform = "scale(0.001)";
         // folderStyle.transform = folderStyle.transform.replace(/scale\([\d.]+\)/, 'scale(0.001)');
 
-        folderState(folderInner, false)
+        folderState(folderInner, false);
+        setIsMax(true);
     }
 
-    // 최소화 -> 복구
+    // 복구
     const reset = () => {
-
         const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
         const folderStyle = selectedFolder.style;
 
-        folderStyle.transition = "transform .2s ease";
+        folderStyle.transition = ".2s ease";
 
         folderStyle.transform = `translate(${position.x}px,${position.y}px) scale(1)`;
-        // folderStyle.transform = folderStyle.transform.replace(/scale\([\d.]+\)/, 'scale(1)');
+
+        if (isMax) {
+            folderStyle.width = `${pSize.width}px`;
+            folderStyle.height = `${pSize.height}px`;
+        } else {
+            folderStyle.width = `${size.width}px`;
+            folderStyle.height = `${size.height}px`;
+        }
 
         folderState(folderInner, true);
         setTimeout(() => {
             transitionReset();
+            setIsMax(false);
         }, 300);
     }
 
@@ -100,6 +130,12 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
         const folderStyle = selectedFolder.style;
         folderStyle.transition = "none";
     }
+
+    useEffect(() => {
+        console.log('사이즈', size)
+        console.log('과거사이즈', pSize)
+        console.log(position)
+    }, [position, size])
 
     useEffect(() => {
         if (folderTrigger === 'min') {
@@ -124,6 +160,9 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
             onDragStop={(e, d) => {
                 setPosition({ x: d.x, y: d.y });
             }}
+            onResizeStart={(e, direction, ref) => {
+                setPsize({ width: size.width, height: size.height });
+            }}
             onResizeStop={(e, direction, ref, delta, position) => {
                 setSize({
                     width: parseInt(ref.style.width, 10),
@@ -144,8 +183,11 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
                 <TopHeader
                     closeFolder={closeFolder}
                     minFolder={minFolder}
+                    maxFolder={maxFolder}
                     setFolderTrigger={setFolderTrigger}
                     directory={directory}
+                    isMax={isMax}
+                    reset={reset}
                 />
                 <MidHeader
                     directory={directory}
