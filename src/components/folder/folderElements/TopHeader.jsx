@@ -1,5 +1,4 @@
 import { Images } from "../../../images/Images";
-
 import { PiPlus, PiMinus } from "react-icons/pi";
 import { GrClose } from "react-icons/gr";
 import { TbSquare } from "react-icons/tb";
@@ -13,7 +12,7 @@ function TopHeader({ closeFolder, minFolder, maxFolder, directory, isMax, reset 
     const maxHandle = () => {
         if (isMax) {
             reset();
-        }else{
+        } else {
             maxFolder();
         }
     }
@@ -43,7 +42,7 @@ function TopHeader({ closeFolder, minFolder, maxFolder, directory, isMax, reset 
         return dirMap[dir] || dir;
     };
 
-    const lastDir = directory[directory.length - 1]
+    const lastDir = directory[directory.length - 1];
     const transedLastDir = transDir(lastDir);
 
     return (

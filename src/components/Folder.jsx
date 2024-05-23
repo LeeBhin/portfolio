@@ -9,10 +9,13 @@ import FolderBody from './folder/folderElements/FolderBody';
 function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolderTrigger, index, setFolder, setFolders, transInner, setDouble, getMaxZIndex, openPos }) {
     const [size, setSize] = useState({ width: 1000, height: 600 });
     const [position, setPosition] = useState({ x: 430, y: 130 });
+    const [prevPosition, setPrevPosition] = useState({ x: 430, y: 130 });
     const [firstDir, setFirstDir] = useState(folderInner);
     const [directory, setDirectory] = useState([]);
     const [isMax, setIsMax] = useState(false);
-    const [pSize, setPsize] = useState({ width: 1000, height: 600 });
+    const [pSize, setPSize] = useState({ width: 1000, height: 600 });
+    const [prevState, setPrevState] = useState({ size: { width: 1000, height: 600 }, position: { x: 430, y: 130 } });
+    const [wasMax, setWasMax] = useState(false);
 
     useEffect(() => setDirectory([transInner(firstDir)]), [firstDir]);
 
@@ -28,6 +31,8 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
         folderState(folderInner, false);
         setTimeout(() => {
             dropFolder(folderInner);
+            setIsMax(false);
+            setWasMax(false); // 닫힐 때 상태 초기화
         }, 200);
     }
 
@@ -71,6 +76,9 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
 
+        setPrevState({ size, position });
+        setPSize({ width: size.width, height: size.height });
+
         folderStyle.transformOrigin = '50% 50%';
         folderStyle.transition = ".15s cubic-bezier(0.88, 0, 0.88, 1)";
         folderStyle.width = `${viewportWidth}px`;
@@ -78,26 +86,50 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
         folderStyle.transform = 'translate(0px, 0px) scale(1)';
 
         folderState(folderInner, true);
-        setPsize({ width: size.width, height: size.height });
-        setSize({
-            width: parseInt(viewportWidth),
-            height: parseInt(viewportHeight)
-        });
+        setSize({ width: viewportWidth, height: viewportHeight });
         setIsMax(true);
+        setWasMax(false);
+    }
+    // 최대화 복구
+    const maxFolderReset = () => {
+        const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
+        const folderStyle = selectedFolder.style;
+
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        setPrevState({ size, position });
+
+        folderStyle.transformOrigin = '50% 50%';
+        folderStyle.transition = ".15s cubic-bezier(0.88, 0, 0.88, 1)";
+        folderStyle.width = `${viewportWidth}px`;
+        folderStyle.height = `${viewportHeight}px`;
+        folderStyle.transform = 'translate(0px, 0px) scale(1)';
+
+        folderState(folderInner, true);
+        setSize({ width: viewportWidth, height: viewportHeight });
+        setPosition({ x: 0, y: 0 });
+        setIsMax(true);
+        setWasMax(false);
     }
 
     // 최소화
     const minFolder = () => {
+
+        if (!isMax) {
+            setPrevPosition(position)
+        }
+
         const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
         const folderStyle = selectedFolder.style;
 
         selectedFolder.style.transformOrigin = `${originX}px ${originY}px`;
         folderStyle.transition = "transform .17s cubic-bezier(0.88, 0, 0.88, 1)";
         folderStyle.transform = "scale(0.001)";
-        // folderStyle.transform = folderStyle.transform.replace(/scale\([\d.]+\)/, 'scale(0.001)');
 
         folderState(folderInner, false);
-        setIsMax(true);
+        setWasMax(isMax);
+        setIsMax(false);
     }
 
     // 복구
@@ -107,20 +139,26 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
 
         folderStyle.transition = ".2s ease";
 
-        folderStyle.transform = `translate(${position.x}px,${position.y}px) scale(1)`;
-
-        if (isMax) {
-            folderStyle.width = `${pSize.width}px`;
-            folderStyle.height = `${pSize.height}px`;
+        if (wasMax && !isMax) {
+            maxFolderReset(); // 최대화 상태로 복원
+        } else if (isMax) {
+            setSize(pSize); // 최대화되기 전 크기로 복원
+            setPosition(prevState.position);
+            folderStyle.width = `${size.width}px`;
+            folderStyle.height = `${size.height}px`;
+            folderStyle.transform = `translate(${prevState.position.x}px,${prevState.position.y}px) scale(1)`;
+            setIsMax(false);
+            setWasMax(true); // 복원 후 원래 크기로 돌아간 경우 wasMax 설정
         } else {
             folderStyle.width = `${size.width}px`;
             folderStyle.height = `${size.height}px`;
+            folderStyle.transform = `translate(${position.x}px,${position.y}px) scale(1)`;
+            setWasMax(false);
         }
 
         folderState(folderInner, true);
         setTimeout(() => {
             transitionReset();
-            setIsMax(false);
         }, 300);
     }
 
@@ -132,10 +170,13 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
     }
 
     useEffect(() => {
-        console.log('사이즈', size)
-        console.log('과거사이즈', pSize)
-        console.log(position)
-    }, [position, size])
+        // console.log('was', wasMax)
+        // console.log('is', isMax)
+        // console.log('size', size)
+        // console.log('pSize', pSize)
+        // console.log('pos', position)
+        // console.log('prevstate', prevState.position)
+    }, [wasMax, isMax, position, size])
 
     useEffect(() => {
         if (folderTrigger === 'min') {
@@ -160,9 +201,9 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
             onDragStop={(e, d) => {
                 setPosition({ x: d.x, y: d.y });
             }}
-            onResizeStart={(e, direction, ref) => {
-                setPsize({ width: size.width, height: size.height });
-            }}
+            // onResizeStart={(e, direction, ref) => {
+            //     setPSize({ width: size.width, height: size.height });
+            // }}
             onResizeStop={(e, direction, ref, delta, position) => {
                 setSize({
                     width: parseInt(ref.style.width, 10),
