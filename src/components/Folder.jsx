@@ -89,7 +89,11 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
         setSize({ width: viewportWidth, height: viewportHeight });
         setIsMax(true);
         setWasMax(false);
+        setTimeout(() => {
+            transitionReset();
+        }, 200);
     }
+
     // 최대화 복구
     const maxFolderReset = () => {
         const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
@@ -101,14 +105,13 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
         setPrevState({ size, position });
 
         folderStyle.transformOrigin = '50% 50%';
-        folderStyle.transition = ".15s cubic-bezier(0.88, 0, 0.88, 1)";
+        folderStyle.transition = ".2s cubic-bezier(0.88, 0, 0.88, 1)";
         folderStyle.width = `${viewportWidth}px`;
         folderStyle.height = `${viewportHeight}px`;
-        folderStyle.transform = 'translate(0px, 0px) scale(1)';
+        folderStyle.transform = `scale(1)`;
 
         folderState(folderInner, true);
         setSize({ width: viewportWidth, height: viewportHeight });
-        setPosition({ x: 0, y: 0 });
         setIsMax(true);
         setWasMax(false);
     }
@@ -117,7 +120,7 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
     const minFolder = () => {
 
         if (!isMax) {
-            setPrevPosition(position)
+            setPrevPosition({ x: position.x, y: position.y })
         }
 
         const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
@@ -152,7 +155,7 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
         } else {
             folderStyle.width = `${size.width}px`;
             folderStyle.height = `${size.height}px`;
-            folderStyle.transform = `translate(${position.x}px,${position.y}px) scale(1)`;
+            folderStyle.transform = `translate(${prevPosition.x}px,${prevPosition.y}px) scale(1)`;
             setWasMax(false);
         }
 
@@ -170,12 +173,13 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
     }
 
     useEffect(() => {
-        // console.log('was', wasMax)
-        // console.log('is', isMax)
-        // console.log('size', size)
-        // console.log('pSize', pSize)
-        // console.log('pos', position)
-        // console.log('prevstate', prevState.position)
+        console.log('was', wasMax)
+        console.log('is', isMax)
+        console.log('size', size)
+        console.log('pSize', pSize)
+        console.log('pos', position)
+        console.log('prevpos', prevPosition)
+        console.log('prevstate', prevState.position)
     }, [wasMax, isMax, position, size])
 
     useEffect(() => {
