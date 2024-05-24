@@ -20,7 +20,18 @@ function Home() {
     const [folder, setFolder] = useState([]);
     const [folders, setFolders] = useState([]);
     const [double, setDouble] = useState([]);
-    const [openPos, setOpenPos] = useState({ x: 430, y: 130 });
+    
+    const initialWidth = window.innerWidth * .7;
+    const initialHeight = window.innerHeight * .7;
+    const ratio = 10 / 6.5;
+    const initialSize = initialWidth / initialHeight > ratio
+    ? { width: initialHeight * ratio, height: initialHeight }
+    : { width: initialWidth, height: initialWidth / ratio };
+
+    const centerX = (window.innerWidth - initialSize.width) / 2;
+    const centerY = (window.innerHeight - initialSize.height) / 2;
+    
+    const [openPos, setOpenPos] = useState({ x: centerX, y: centerY });
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -165,7 +176,9 @@ function Home() {
         if (folder.length > 0) {
             setOpenPos({ x: openPos.x + 30, y: openPos.y + 30 });
         } else {
-            setOpenPos({ x: 430, y: 130 });
+            const centerX = (window.innerWidth - initialSize.width) / 2;
+            const centerY = (window.innerHeight - initialSize.height) / 2;
+            setOpenPos({ x: centerX, y: centerY });
         }
     };
 

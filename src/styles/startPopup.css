@@ -5,6 +5,8 @@
     height: 722.7px;
     width: 640px;
     margin: 0 auto;
+    position: relative;
+    z-index: 10000;
 }
 
 .startPopup {
@@ -294,6 +296,6 @@
     transition: .2s cubic-bezier(0.88, 0, 0.88, 1);
 }
 
-.startPopup .skills::-webkit-scrollbar{
+.startPopup .skills::-webkit-scrollbar {
     display: none;
 }

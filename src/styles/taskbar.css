@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    z-index: 100;
+    z-index: 10001;
 }
 
 /* 시작메뉴 버튼 */
