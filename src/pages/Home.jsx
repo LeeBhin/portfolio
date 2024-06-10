@@ -8,7 +8,6 @@ import SearchPopup from '../components/SearchPopup';
 import StartPopup from '../components/StartPopup';
 import DesktopIcon from '../components/DesktopIcon';
 import Folder from '../components/Folder'
-import FolderSelect from '../components/FolderSelect';
 
 function Home() {
     const [isSearchOn, setIsSearchOn] = useState(false);
@@ -359,8 +358,6 @@ function Home() {
             />
             <SearchPopup />
             <StartPopup />
-
-            {/* <FolderSelect /> */}
         </div>
     );
 }

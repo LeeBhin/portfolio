@@ -2,7 +2,7 @@ function FolderPicture() {
 
     return (
         <>
-            사진 폴더
+            {/* 사진 폴더 */}
         </>
     );
 }

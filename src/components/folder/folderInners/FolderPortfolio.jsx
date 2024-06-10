@@ -2,7 +2,7 @@ function FolderPortfolio() {
 
     return (
         <>
-            포폴 폴더
+            {/* 포폴 폴더 */}
         </>
     );
 }

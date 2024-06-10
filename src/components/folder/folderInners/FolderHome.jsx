@@ -2,7 +2,7 @@ function FolderHome() {
 
     return (
         <>
-            홈 폴더
+            {/* 홈 폴더 */}
         </>
     );
 }

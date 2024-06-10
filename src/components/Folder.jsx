@@ -7,189 +7,180 @@ import BotHeader from './folder/folderElements/BotHeader';
 import FolderBody from './folder/folderElements/FolderBody';
 
 function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolderTrigger, index, setFolder, setFolders, transInner, setDouble, getMaxZIndex, openPos }) {
-
-    const ratio = 10 / 6.5;
-
-    const initialWidth = window.innerWidth * .7;
-    const initialHeight = window.innerHeight * .7;
-    const initialSize = initialWidth / initialHeight > ratio
-        ? { width: initialHeight * ratio, height: initialHeight }
-        : { width: initialWidth, height: initialWidth / ratio };
-
-    const [size, setSize] = useState(initialSize);
-
-    const initialPosition = {
-        x: (window.innerWidth - initialSize.width) / 2,
-        y: (window.innerHeight - initialSize.height) / 2
-    };
-
-    const [position, setPosition] = useState(initialPosition);
-    const [prevPosition, setPrevPosition] = useState(initialPosition);
+    const [size, setSize] = useState({ width: 1000, height: 600 });
+    const [position, setPosition] = useState({ x: 430, y: 130 });
+    const [prevPosition, setPrevPosition] = useState({ x: 430, y: 130 });
     const [firstDir, setFirstDir] = useState(folderInner);
     const [directory, setDirectory] = useState([]);
     const [isMax, setIsMax] = useState(false);
     const [pSize, setPSize] = useState({ width: 1000, height: 600 });
-    const [prevState, setPrevState] = useState({ size: { width: 1000, height: 600 }, position: initialPosition });
+    const [prevState, setPrevState] = useState({ size: { width: 1000, height: 600 }, position: { x: 430, y: 130 } });
     const [wasMax, setWasMax] = useState(false);
 
     useEffect(() => setDirectory([transInner(firstDir)]), [firstDir]);
 
-    // 폴더 요소 선택
-    const selectFolder = () => document.querySelector(`.f${folderInner}.f${index}`);
-
-    // 스타일 전환 적용
-    const applyTransition = (element, transition) => {
-        element.style.transition = transition;
-    };
-
-    // 변환 설정
-    const setTransform = (element, transform) => {
-        element.style.transform = transform;
-    };
-
     // 폴더 닫기
     const closeFolder = () => {
-        const selectedFolder = selectFolder();
-        applyTransition(selectedFolder, "transform 0.2s cubic-bezier(0.88, 0, 0.88, 1), opacity 0.15s cubic-bezier(0.88, 0, 0.88, 1)");
-        setTransform(selectedFolder, selectedFolder.style.transform + " scale(0.8)");
+        const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
+
+        selectedFolder.style.transformOrigin = '50% 50%';
+        selectedFolder.style.transition = "transform 0.2s cubic-bezier(0.88, 0, 0.88, 1), opacity 0.15s cubic-bezier(0.88, 0, 0.88, 1)";
+        selectedFolder.style.transform += " scale(0.8)";
         selectedFolder.style.opacity = "0";
 
         folderState(folderInner, false);
         setTimeout(() => {
             dropFolder(folderInner);
             setIsMax(false);
-            setWasMax(false);
+            setWasMax(false); // 닫힐 때 상태 초기화
         }, 200);
-    };
+    }
 
-    // 폴더 처음 열기
+    // 컴포넌트 생성 후 동작
     const firstFolder = () => {
-        const selectedFolder = selectFolder();
-        selectedFolder.style.transform += ' scale(.8)';
-        selectedFolder.style.opacity = "0";
-        selectedFolder.style.zIndex = getMaxZIndex() + 1;
-        folderState(folderInner, true);
-        setTimeout(() => openFolder(), 0);
-    };
+        const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
+        const folderStyle = selectedFolder.style;
 
-    // 폴더 열리는 애니메이션
+        folderStyle.transform += ' scale(.8)';
+        folderStyle.opacity = "0";
+
+        folderStyle.zIndex = getMaxZIndex() + 1;
+        folderState(folderInner, true)
+        setTimeout(() => {
+            openFolder();
+        }, 0);
+    }
+
+    // 열리는 애니메이션
     const openFolder = () => {
-        const selectedFolder = selectFolder();
-        applyTransition(selectedFolder, "transform 0.2s ease, opacity 0.15s ease");
-        setTransform(selectedFolder, selectedFolder.style.transform.replace(/scale\([\d.]+\)/, 'scale(1)'));
-        selectedFolder.style.opacity = "1";
-        // setTimeout(() => transitionReset(), 400);
-    };
+        const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
+        const folderStyle = selectedFolder.style;
+        folderStyle.transition = "transform 0.2s ease, opacity 0.15s ease";
+        folderStyle.transform = folderStyle.transform.replace(/scale\([\d.]+\)/, 'scale(1)');
+        folderStyle.opacity = "1";
+
+        setTimeout(() => {
+            transitionReset();
+        }, 200);
+    }
 
     const file = document.querySelector('.fileExImg').getBoundingClientRect();
     const originX = file.left;
     const originY = file.top;
 
-    // 폴더 최대화
+    // 최대화
     const maxFolder = () => {
-        const selectedFolder = selectFolder();
+        const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
+        const folderStyle = selectedFolder.style;
+
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
         setPrevState({ size, position });
         setPSize({ width: size.width, height: size.height });
 
-        applyTransition(selectedFolder, ".15s cubic-bezier(0.88, 0, 0.88, 1)");
-        selectedFolder.style.width = `${window.innerWidth}px`;
-        selectedFolder.style.height = `${window.innerHeight}px`;
-        setTransform(selectedFolder, 'translate(0px, 0px) scale(1)');
+        folderStyle.transformOrigin = '50% 50%';
+        folderStyle.transition = ".15s cubic-bezier(0.88, 0, 0.88, 1)";
+        folderStyle.width = `${viewportWidth}px`;
+        folderStyle.height = `${viewportHeight}px`;
+        folderStyle.transform = 'translate(0px, 0px) scale(1)';
 
         folderState(folderInner, true);
-        setSize({ width: window.innerWidth, height: window.innerHeight });
+        setSize({ width: viewportWidth, height: viewportHeight });
         setIsMax(true);
         setWasMax(false);
-        // setTimeout(() => transitionReset(), 200);
-    };
+        setTimeout(() => {
+            transitionReset();
+        }, 200);
+    }
 
     // 최대화 복구
     const maxFolderReset = () => {
-        const selectedFolder = selectFolder();
+        const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
+        const folderStyle = selectedFolder.style;
+
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
         setPrevState({ size, position });
 
-        applyTransition(selectedFolder, ".2s cubic-bezier(0.88, 0, 0.88, 1)");
-        selectedFolder.style.width = `${window.innerWidth}px`;
-        selectedFolder.style.height = `${window.innerHeight}px`;
-        setTransform(selectedFolder, `scale(1)`);
+        folderStyle.transformOrigin = '50% 50%';
+        folderStyle.transition = ".2s cubic-bezier(0.88, 0, 0.88, 1)";
+        folderStyle.width = `${viewportWidth}px`;
+        folderStyle.height = `${viewportHeight}px`;
+        folderStyle.transform = `scale(1)`;
 
         folderState(folderInner, true);
-        setSize({ width: window.innerWidth, height: window.innerHeight });
+        setSize({ width: viewportWidth, height: viewportHeight });
         setIsMax(true);
         setWasMax(false);
-    };
+    }
 
-    // 폴더 최소화
+    // 최소화
     const minFolder = () => {
+
         if (!isMax) {
-            setPrevPosition({ x: position.x, y: position.y });
+            setPrevPosition({ x: position.x, y: position.y })
         }
 
-        const selectedFolder = selectFolder();
+        const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
+        const folderStyle = selectedFolder.style;
+
         selectedFolder.style.transformOrigin = `${originX}px ${originY}px`;
-        applyTransition(selectedFolder, "transform .17s cubic-bezier(0.88, 0, 0.88, 1)");
-        setTransform(selectedFolder, "scale(0.001)");
+        folderStyle.transition = "transform .17s cubic-bezier(0.88, 0, 0.88, 1)";
+        folderStyle.transform = "scale(0.001)";
 
         folderState(folderInner, false);
         setWasMax(isMax);
         setIsMax(false);
-    };
+    }
 
     // 복구
     const reset = () => {
-        const selectedFolder = selectFolder();
-        applyTransition(selectedFolder, ".2s ease");
+        const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
+        const folderStyle = selectedFolder.style;
+
+        folderStyle.transition = ".2s ease";
 
         if (wasMax && !isMax) {
-            maxFolderReset();
+            maxFolderReset(); // 최대화 상태로 복원
         } else if (isMax) {
-            setSize(pSize);
+            setSize(pSize); // 최대화되기 전 크기로 복원
             setPosition(prevState.position);
-            selectedFolder.style.width = `${size.width}px`;
-            selectedFolder.style.height = `${size.height}px`;
-            setTransform(selectedFolder, `translate(${prevState.position.x}px,${prevState.position.y}px) scale(1)`);
+            folderStyle.width = `${size.width}px`;
+            folderStyle.height = `${size.height}px`;
+            folderStyle.transform = `translate(${prevState.position.x}px,${prevState.position.y}px) scale(1)`;
             setIsMax(false);
-            setWasMax(true);
+            setWasMax(true); // 복원 후 원래 크기로 돌아간 경우 wasMax 설정
         } else {
-            selectedFolder.style.width = `${size.width}px`;
-            selectedFolder.style.height = `${size.height}px`;
-            setTransform(selectedFolder, `translate(${prevPosition.x}px,${prevPosition.y}px) scale(1)`);
+            folderStyle.width = `${size.width}px`;
+            folderStyle.height = `${size.height}px`;
+            folderStyle.transform = `translate(${prevPosition.x}px,${prevPosition.y}px) scale(1)`;
             setWasMax(false);
         }
 
         folderState(folderInner, true);
-        // setTimeout(() => transitionReset(), 300);
-    };
+        setTimeout(() => {
+            transitionReset();
+        }, 300);
+    }
 
-    // 전환 초기화
+    // 기본
     const transitionReset = () => {
-        const selectedFolder = selectFolder();
-        applyTransition(selectedFolder, "none");
-    };
-
-    // 인덱스 업
-    const indexUp = () => {
-        transitionReset();
-        const selectedFolder = selectFolder();
-        selectedFolder.style.zIndex = getMaxZIndex() + 1;
-    };
-
-    // 열기 설정
-    const openSet = () => {
-        const selectedFolder = selectFolder();
-        selectedFolder.style.opacity = "0";
-        setPosition(openPos);
-    };
+        const selectedFolder = document.querySelector(`.f${folderInner}.f${index}`);
+        const folderStyle = selectedFolder.style;
+        folderStyle.transition = "none";
+    }
 
     useEffect(() => {
-        console.log('was', wasMax);
-        console.log('is', isMax);
-        console.log('size', size);
-        console.log('pSize', pSize);
-        console.log('pos', position);
-        console.log('prevpos', prevPosition);
-        console.log('prevstate', prevState.position);
-    }, [wasMax, isMax, position, size]);
+        console.log('was', wasMax)
+        console.log('is', isMax)
+        console.log('size', size)
+        console.log('pSize', pSize)
+        console.log('pos', position)
+        console.log('prevpos', prevPosition)
+        console.log('prevstate', prevState.position)
+    }, [wasMax, isMax, position, size])
 
     useEffect(() => {
         if (folderTrigger === 'min') {
@@ -197,23 +188,26 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
         } else if (folderTrigger === 'reset') {
             reset();
         }
-        setFolderTrigger(null);
+        setFolderTrigger(null)
     }, [folderTrigger]);
 
+    // 초기 동작
     useEffect(() => {
-        openSet();
-        setTimeout(() => firstFolder(), 0);
+        firstFolder();
+        setPosition(openPos)
     }, []);
 
     return (
         <Rnd className={`folder f${folderInner} f${index}`}
             size={size}
-            onMouseDown={indexUp}
             position={position}
             dragHandleClassName="folderHeader"
             onDragStop={(e, d) => {
                 setPosition({ x: d.x, y: d.y });
             }}
+            // onResizeStart={(e, direction, ref) => {
+            //     setPSize({ width: size.width, height: size.height });
+            // }}
             onResizeStop={(e, direction, ref, delta, position) => {
                 setSize({
                     width: parseInt(ref.style.width, 10),
@@ -256,8 +250,8 @@ function Folder({ folderInner, folderState, dropFolder, folderTrigger, setFolder
                     directory={directory}
                     setDouble={setDouble}
                 />
-            </div>
-        </Rnd>
+            </div >
+        </Rnd >
     );
 }
 
