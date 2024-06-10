@@ -3,7 +3,7 @@ import '../styles/taskbar.css'
 import { HiOutlineSearch } from "react-icons/hi";
 import { Images } from '../images/Images';
 
-function Taskbar({ changeSearch, changeStart, isSearch, isStart, folderClick, isFolderOn }) {
+function Taskbar({ changeSearch, changeStart, isSearch, isStart, folderClick, isFolderOn, setIsTaskClick }) {
     const [isSearchOn, setIsSearchOn] = useState(false)
     const [isStartOn, setIsStartOn] = useState(false)
     const [time, setTime] = useState(new Date());
@@ -55,11 +55,13 @@ function Taskbar({ changeSearch, changeStart, isSearch, isStart, folderClick, is
     const handleSearch = () => {
         setIsSearchOn(prevState => !prevState);
         changeSearch(!isSearchOn);
+        setIsTaskClick(true)
     }
 
     const handleStart = () => {
         setIsStartOn(prevState => !prevState);
         changeStart(!isStartOn);
+        setIsTaskClick(true)
     }
 
     const handleFolder = (target) => {

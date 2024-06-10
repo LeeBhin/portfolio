@@ -8,29 +8,31 @@ import SearchPopup from '../components/SearchPopup';
 import StartPopup from '../components/StartPopup';
 import DesktopIcon from '../components/DesktopIcon';
 import Folder from '../components/Folder'
+import FolderSelect from '../components/FolderSelect';
 
 function Home() {
     const [isSearchOn, setIsSearchOn] = useState(false);
     const [isStartOn, setIsStartOn] = useState(false);
     const [activeIcon, setActiveIcon] = useState(null);
-    const [isFolderOn, setIsFolderOn] = useState(false)
-    const [folderTrigger, setFolderTrigger] = useState(null)
-    const [activeWidth, setActiveWidth] = useState('')
+    const [isFolderOn, setIsFolderOn] = useState(false);
+    const [folderTrigger, setFolderTrigger] = useState(null);
+    const [activeWidth, setActiveWidth] = useState('');
+    const [isTaskClick, setIsTaskClick] = useState(false);
 
     const [folder, setFolder] = useState([]);
     const [folders, setFolders] = useState([]);
     const [double, setDouble] = useState([]);
-    
+
     const initialWidth = window.innerWidth * .7;
     const initialHeight = window.innerHeight * .7;
     const ratio = 10 / 6.5;
     const initialSize = initialWidth / initialHeight > ratio
-    ? { width: initialHeight * ratio, height: initialHeight }
-    : { width: initialWidth, height: initialWidth / ratio };
+        ? { width: initialHeight * ratio, height: initialHeight }
+        : { width: initialWidth, height: initialWidth / ratio };
 
     const centerX = (window.innerWidth - initialSize.width) / 2;
     const centerY = (window.innerHeight - initialSize.height) / 2;
-    
+
     const [openPos, setOpenPos] = useState({ x: centerX, y: centerY });
 
     useEffect(() => {
@@ -108,12 +110,15 @@ function Home() {
         } else {
             if (!isSearchOn && !isStartOn) {
                 popupElement.style.transition = '.23s cubic-bezier(0.88, 0, 0.88, 1)';
-            } else {
+            } else if (isTaskClick) {
                 popupElement.style.transition = '0s';
+            } else {
+                popupElement.style.transition = '.23s cubic-bezier(0.88, 0, 0.88, 1)';
             }
             popupElement.classList.remove(classUp);
             popupElement.classList.add(classDown);
         }
+        setIsTaskClick(false)
     }
 
     const trueCount = folders.filter(folder => folder.value === true).length;
@@ -219,6 +224,7 @@ function Home() {
         } else {
             setActiveWidth('close')
         }
+        console.log(folder, folders)
     }, [folder, folders]);
 
     // actiebar 제어
@@ -349,9 +355,12 @@ function Home() {
                 isStart={isStartOn}
                 folderClick={folderClick}
                 isFolderOn={isFolderOn}
+                setIsTaskClick={setIsTaskClick}
             />
             <SearchPopup />
             <StartPopup />
+
+            {/* <FolderSelect /> */}
         </div>
     );
 }
